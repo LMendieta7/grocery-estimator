@@ -1,8 +1,10 @@
-from backend.app.schemas.estimate import EstimateResponse, GroceryItemResponse
 from backend.app.models.grocery_item import GroceryItem
+from backend.app.schemas.estimate import EstimateResponse, GroceryItemResponse
 
 
-INVENTORY= [
+DEFAULT_ITEM_PRICE = 3.50
+
+INVENTORY = [
     GroceryItem(name="milk", price=4.50),
     GroceryItem(name="bread", price=3.25),
     GroceryItem(name="eggs", price=5.00),
@@ -13,8 +15,13 @@ INVENTORY= [
     GroceryItem(name="potatoes", price=4.75),
     GroceryItem(name="onions", price=3.50),
     GroceryItem(name="pasta", price=2.25),
-    ]
-INVENTORY_BY_NAME = {item.name: item for item in INVENTORY}
+]
+
+INVENTORY_BY_NAME = {
+    item.name.lower(): item
+    for item in INVENTORY
+}
+
 
 def estimate_grocery_text(grocery_text: str) -> EstimateResponse:
     requested_names = [
@@ -22,21 +29,16 @@ def estimate_grocery_text(grocery_text: str) -> EstimateResponse:
         for line in grocery_text.splitlines()
         if line.strip()
     ]
-    
-    response_items= []
+
+    response_items = []
 
     for name in requested_names:
         matched_item = INVENTORY_BY_NAME.get(name.lower())
-        if matched_item:
-            response_items.append(
-                GroceryItemResponse(
-                    name=matched_item.name,
-                    price=matched_item.price
-                )
-            )
-        
+        price = matched_item.price if matched_item else DEFAULT_ITEM_PRICE
+        response_items.append(GroceryItemResponse(name=name, price=price))
+
     return EstimateResponse(
-        items=[GroceryItemResponse(name=item.name, price=item.price) for item in response_items],
-        item_count=len(requested_names),
-        estimated_total=sum(item.price for item in response_items),
+        items=response_items,
+        item_count=len(response_items),
+        estimated_total=round(sum(item.price for item in response_items), 2),
     )

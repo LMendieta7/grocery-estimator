@@ -1,6 +1,8 @@
-# Grocery Estimator
+# Grocery Estimator Learning Skeleton
 
-FastAPI + React grocery cost estimator with a repository layer that can run from memory or PostgreSQL.
+A small FastAPI backend for learning how routes, schemas, services, and models fit together.
+
+This branch is intentionally simple so you can rebuild the app step by step.
 
 ## Backend
 
@@ -11,7 +13,7 @@ source .venv/bin/activate
 python -m pip install -r backend/requirements.txt
 ```
 
-Run with the default in-memory inventory:
+Run the API:
 
 ```bash
 python -m uvicorn backend.app.main:app --reload
@@ -23,49 +25,20 @@ API docs:
 http://127.0.0.1:8000/docs
 ```
 
-## PostgreSQL
+Test in Swagger with:
 
-Start Postgres:
-
-```bash
-docker compose up -d postgres
+```json
+{
+  "grocery_text": "milk\nbread\neggs"
+}
 ```
 
-Create tables and seed inventory:
-
-```bash
-source .venv/bin/activate
-python -m backend.app.db.seed
-```
-
-Run the API using PostgreSQL:
-
-```bash
-GROCERY_REPOSITORY_BACKEND=postgres python -m uvicorn backend.app.main:app --reload
-```
-
-Default database URL:
+## Current Structure
 
 ```text
-postgresql+psycopg://grocery_user:grocery_password@localhost:5432/grocery_app
-```
-
-Override it with:
-
-```bash
-GROCERY_DATABASE_URL="postgresql+psycopg://user:password@host:5432/database"
-```
-
-## Frontend
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Open:
-
-```text
-http://127.0.0.1:5173
+backend/app/main.py                       # creates FastAPI app and connects routers
+backend/app/api/routes/estimates.py       # HTTP endpoint
+backend/app/schemas/estimate.py           # request/response data shapes
+backend/app/services/estimate_service.py  # business logic
+backend/app/models/grocery_item.py        # internal dataclass model
 ```

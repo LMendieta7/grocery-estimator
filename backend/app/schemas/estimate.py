@@ -7,9 +7,11 @@ class EstimateRequest(BaseModel):
         examples=["milk\nbread\neggs"],
     )
 
+
 class GroceryItemResponse(BaseModel):
     name: str
     price: float
+
 
 class EstimateResponse(BaseModel):
     items: list[GroceryItemResponse]
