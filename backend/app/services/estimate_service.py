@@ -24,21 +24,43 @@ INVENTORY_BY_NAME = {
 
 
 def estimate_grocery_text(grocery_text: str) -> EstimateResponse:
-    requested_names = [
-        line.strip()
-        for line in grocery_text.splitlines()
-        if line.strip()
-    ]
-
     response_items = []
 
-    for name in requested_names:
-        matched_item = INVENTORY_BY_NAME.get(name.lower())
-        price = matched_item.price if matched_item else DEFAULT_ITEM_PRICE
-        response_items.append(GroceryItemResponse(name=name, price=price))
+    for line in grocery_text.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+
+        parts = line.split(maxsplit=1)
+        if parts[0].isdigit() and len(parts) >=2:
+            quantity = int(parts[0])
+            name = parts[1]
+        else:
+            quantity = 1
+            name = line
+        
+        item_found = INVENTORY_BY_NAME.get(name.lower())
+
+        if item_found:
+            found = True
+            price = item_found.price
+        else:
+            found = False
+            price = DEFAULT_ITEM_PRICE
+        
+        total_price = price * quantity
+
+        response_items.append(GroceryItemResponse(
+            name=name,
+            quantity=quantity,
+            price=price,
+            total_price=total_price,
+            found=found
+        ))
+
 
     return EstimateResponse(
-        items=response_items,
-        item_count=len(response_items),
-        estimated_total=round(sum(item.price for item in response_items), 2),
+        items= response_items,
+        item_count= len(response_items),
+        estimated_total= sum(item.total_price for item in response_items),
     )

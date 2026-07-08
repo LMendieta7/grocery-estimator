@@ -10,7 +10,10 @@ class EstimateRequest(BaseModel):
 
 class GroceryItemResponse(BaseModel):
     name: str
+    quantity: int
     price: float
+    total_price: float
+    found: bool
 
 
 class EstimateResponse(BaseModel):
