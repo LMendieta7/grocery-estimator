@@ -1,8 +1,8 @@
-# Grocery Estimator Learning Skeleton
+# Smart Grocery
 
-A small FastAPI backend for learning how routes, schemas, services, and models fit together.
+Smart Grocery is a modern grocery planning app for building grocery lists, estimating costs, tracking shopping progress, and maintaining a personal grocery catalog.
 
-This branch is intentionally simple so you can rebuild the app step by step.
+The current codebase is still a small FastAPI learning skeleton. The agreed product direction and build plan live in [docs/smart-grocery-requirements.md](docs/smart-grocery-requirements.md).
 
 ## Backend
 

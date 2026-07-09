@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: smart_grocery_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: smart_grocery
+      POSTGRES_USER: smart_grocery_user
+      POSTGRES_PASSWORD: smart_grocery_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

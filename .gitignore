@@ -11,6 +11,7 @@ __pycache__/
 # Environment
 .env
 .env.*
+!.env.example
 
 # Frontend
 frontend/node_modules/
@@ -22,3 +23,6 @@ frontend/tsconfig.tsbuildinfo
 *.db
 *.sqlite
 *.sqlite3
+
+# Local planning notes
+docs/
