@@ -1,6 +1,7 @@
 from logging.config import fileConfig
 from backend.app.db.base import Base
-from backend.app.db.models.product import ProductTable
+import backend.app.db.models
+
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool

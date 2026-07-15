@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Produce"
+  },
+  {
+    "name": "Dairy"
+  },
+  {
+    "name": "Bakery"
+  },
+  {
+    "name": "Meat"
+  },
+  {
+    "name": "Seafood"
+  },
+  {
+    "name": "Pantry"
+  },
+  {
+    "name": "Frozen"
+  },
+  {
+    "name": "Beverages"
+  },
+  {
+    "name": "Snacks"
+  },
+  {
+    "name": "Household"
+  },
+  {
+    "name": "Personal Care"
+  },
+  {
+    "name": "Baby"
+  },
+  {
+    "name": "Pet Supplies"
+  },
+  {
+    "name": "Other"
+  }
+]
