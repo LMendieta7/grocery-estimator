@@ -1,12 +1,21 @@
-from sqlalchemy import select, func
+from sqlalchemy import func, select
+from sqlalchemy.orm import Session
+
 from backend.app.db.models.product import ProductTable
 from backend.app.db.models.category import CategoryTable
 
 
-
 class ProductRepository:
-    def __init__(self, db):
+    def __init__(self, db: Session):
         self.db = db
+
+    def get_product_by_id(self, product_id: int):
+        statement = (
+            select(ProductTable)
+            .where(ProductTable.id == product_id)
+        )
+
+        return self.db.scalar(statement)
 
     def get_by_exact_name(self, product_name: str):
         statement = (
@@ -15,45 +24,25 @@ class ProductRepository:
             .where(func.lower(ProductTable.name) == product_name.lower().strip())
         )
 
-        row = self.db.execute(statement).first()
-        
-        return row
-    
+        return self.db.execute(statement).first()
+
     def search_by_name(self, query: str):
         statement = (
             select(ProductTable, CategoryTable)
             .join(CategoryTable, ProductTable.category_id == CategoryTable.id)
-            .where((ProductTable.name).ilike(f"%{query.strip()}%"))
+            .where(ProductTable.name.ilike(f"%{query.strip()}%"))
             .order_by(ProductTable.name)
             .limit(50)
         )
 
-        rows = self.db.execute(statement).all()
+        return self.db.execute(statement).all()
 
-        return rows
-    
     def create(self, product: ProductTable):
         self.db.add(product)
         self.db.flush()
         return product
-    
-    def delete(self, product):
+
+    def delete(self, product: ProductTable):
         self.db.delete(product)
         self.db.flush()
         return product
-
-    def get_product_by_id(self, product_id: int):
-        statement = (
-            select(ProductTable)
-            .where(ProductTable.id == product_id)
-        )
-        return self.db.scalar(statement)
-
-    def get_category_by_id(self, category_id: int):
-        statement = (
-            select(CategoryTable)
-            .where(CategoryTable.id == category_id)
-        )
-
-        return self.db.scalar(statement)
-    

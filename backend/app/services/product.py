@@ -5,8 +5,9 @@ from backend.app.db.models.product import ProductTable
 
 
 class ProductService:
-    def __init__(self, product_repository, db):
+    def __init__(self, product_repository, category_repository, db):
         self.product_repository = product_repository
+        self.category_repository = category_repository
         self.db = db
 
     def get_product_by_exact_name(self, product_name: str):
@@ -41,7 +42,7 @@ class ProductService:
         ]
     
     def create_product(self, request):
-        category = self.product_repository.get_category_by_id(request.category_id)
+        category = self.category_repository.get_by_id(request.category_id)
 
         if category is None:
             return None

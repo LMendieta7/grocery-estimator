@@ -6,6 +6,7 @@ from backend.app.schemas.product import ProductResponse, ProductCreateRequest, D
 
 from backend.app.services.product import ProductService
 from backend.app.repository.product import ProductRepository
+from backend.app.repository.category import CategoryRepository
 
 router = APIRouter()
 
@@ -16,7 +17,8 @@ def get_product_by_exact_name(
     db: Session = Depends(get_db),
 ):
     repository = ProductRepository(db)
-    service = ProductService(repository, db)
+    category_repository = CategoryRepository(db)
+    service = ProductService(repository, category_repository, db)
     
     product = service.get_product_by_exact_name(name)
 
@@ -31,7 +33,8 @@ def search_products(
     db: Session = Depends(get_db),
 ):
     repository = ProductRepository(db)
-    service = ProductService(repository, db)
+    category_repository = CategoryRepository(db)
+    service = ProductService(repository, category_repository, db)
     
     return service.search_products_by_name(q)
 
@@ -42,7 +45,8 @@ def create_products(
     db: Session = Depends(get_db),
 ):
     repository = ProductRepository(db)
-    service = ProductService(repository, db)
+    category_repository = CategoryRepository(db)
+    service = ProductService(repository, category_repository, db)
     product = service.create_product(request)
 
     if product is None:
@@ -56,7 +60,8 @@ def delete_products(
     db: Session = Depends(get_db),
 ):
     repository = ProductRepository(db)
-    service = ProductService(repository, db)
+    category_repository = CategoryRepository(db)
+    service = ProductService(repository, category_repository, db)
     product = service.delete_product(product_id)
 
     if product is None:
