@@ -1,2028 +1,2028 @@
 [
   {
-    "name": "Bananas",
+    "name": "bananas",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Apples",
+    "name": "apples",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Green Apples",
+    "name": "green apples",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Red Apples",
+    "name": "red apples",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Oranges",
+    "name": "oranges",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Mandarins",
+    "name": "mandarins",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Lemons",
+    "name": "lemons",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Limes",
+    "name": "limes",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Grapes",
+    "name": "grapes",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Red Grapes",
+    "name": "red grapes",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Green Grapes",
+    "name": "green grapes",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Strawberries",
+    "name": "strawberries",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Blueberries",
+    "name": "blueberries",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Raspberries",
+    "name": "raspberries",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Blackberries",
+    "name": "blackberries",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Pineapple",
+    "name": "pineapple",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Mangoes",
+    "name": "mangoes",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Watermelon",
+    "name": "watermelon",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cantaloupe",
+    "name": "cantaloupe",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Honeydew Melon",
+    "name": "honeydew melon",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Peaches",
+    "name": "peaches",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Nectarines",
+    "name": "nectarines",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Pears",
+    "name": "pears",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Plums",
+    "name": "plums",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Kiwi",
+    "name": "kiwi",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Avocados",
+    "name": "avocados",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Tomatoes",
+    "name": "tomatoes",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Roma Tomatoes",
+    "name": "roma tomatoes",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cherry Tomatoes",
+    "name": "cherry tomatoes",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Lettuce",
+    "name": "lettuce",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Romaine Lettuce",
+    "name": "romaine lettuce",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Iceberg Lettuce",
+    "name": "iceberg lettuce",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Spinach",
+    "name": "spinach",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Kale",
+    "name": "kale",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cabbage",
+    "name": "cabbage",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Broccoli",
+    "name": "broccoli",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cauliflower",
+    "name": "cauliflower",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Carrots",
+    "name": "carrots",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Celery",
+    "name": "celery",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cucumbers",
+    "name": "cucumbers",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Bell Peppers",
+    "name": "bell peppers",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Onions",
+    "name": "onions",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Red Onions",
+    "name": "red onions",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Green Onions",
+    "name": "green onions",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Garlic",
+    "name": "garlic",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Potatoes",
+    "name": "potatoes",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Red Potatoes",
+    "name": "red potatoes",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Sweet Potatoes",
+    "name": "sweet potatoes",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Corn",
+    "name": "corn",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Mushrooms",
+    "name": "mushrooms",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cilantro",
+    "name": "cilantro",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Parsley",
+    "name": "parsley",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Ginger",
+    "name": "ginger",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Zucchini",
+    "name": "zucchini",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Squash",
+    "name": "squash",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Green Beans",
+    "name": "green beans",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Asparagus",
+    "name": "asparagus",
     "category": "Produce",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Milk",
+    "name": "milk",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Whole Milk",
+    "name": "whole milk",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "2% Milk",
+    "name": "2% milk",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Skim Milk",
+    "name": "skim milk",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Chocolate Milk",
+    "name": "chocolate milk",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Soy Milk",
+    "name": "soy milk",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Almond Milk",
+    "name": "almond milk",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Oat Milk",
+    "name": "oat milk",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Coconut Milk",
+    "name": "coconut milk",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Eggs",
+    "name": "eggs",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Large White Eggs",
+    "name": "large white eggs",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Large Brown Eggs",
+    "name": "large brown eggs",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Butter",
+    "name": "butter",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Margarine",
+    "name": "margarine",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cream Cheese",
+    "name": "cream cheese",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Sour Cream",
+    "name": "sour cream",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cottage Cheese",
+    "name": "cottage cheese",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Yogurt",
+    "name": "yogurt",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Greek Yogurt",
+    "name": "greek yogurt",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Vanilla Yogurt",
+    "name": "vanilla yogurt",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cheddar Cheese",
+    "name": "cheddar cheese",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Mozzarella Cheese",
+    "name": "mozzarella cheese",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "American Cheese",
+    "name": "american cheese",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Swiss Cheese",
+    "name": "swiss cheese",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Parmesan Cheese",
+    "name": "parmesan cheese",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "String Cheese",
+    "name": "string cheese",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Heavy Cream",
+    "name": "heavy cream",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Whipped Cream",
+    "name": "whipped cream",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Coffee Creamer",
+    "name": "coffee creamer",
     "category": "Dairy",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "White Bread",
+    "name": "white bread",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Whole Wheat Bread",
+    "name": "whole wheat bread",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Honey Wheat Bread",
+    "name": "honey wheat bread",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Whole Grains & Seeds Bread",
+    "name": "whole grains & seeds bread",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Sourdough Bread",
+    "name": "sourdough bread",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Rye Bread",
+    "name": "rye bread",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "French Bread",
+    "name": "french bread",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Italian Bread",
+    "name": "italian bread",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Hamburger Buns",
+    "name": "hamburger buns",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Hot Dog Buns",
+    "name": "hot dog buns",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Dinner Rolls",
+    "name": "dinner rolls",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Flour Tortillas",
+    "name": "flour tortillas",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Corn Tortillas",
+    "name": "corn tortillas",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Bagels",
+    "name": "bagels",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "English Muffins",
+    "name": "english muffins",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Croissants",
+    "name": "croissants",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Muffins",
+    "name": "muffins",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Donuts",
+    "name": "donuts",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cake",
+    "name": "cake",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cupcakes",
+    "name": "cupcakes",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Pita Bread",
+    "name": "pita bread",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Naan Bread",
+    "name": "naan bread",
     "category": "Bakery",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Chicken Breast",
+    "name": "chicken breast",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Chicken Thighs",
+    "name": "chicken thighs",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Chicken Wings",
+    "name": "chicken wings",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Chicken Drumsticks",
+    "name": "chicken drumsticks",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Whole Chicken",
+    "name": "whole chicken",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Ground Chicken",
+    "name": "ground chicken",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Ground Turkey",
+    "name": "ground turkey",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Turkey Breast",
+    "name": "turkey breast",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Ground Beef",
+    "name": "ground beef",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Beef Stew Meat",
+    "name": "beef stew meat",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Steak",
+    "name": "steak",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Beef Roast",
+    "name": "beef roast",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Pork Chops",
+    "name": "pork chops",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Pork Loin",
+    "name": "pork loin",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Ground Pork",
+    "name": "ground pork",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Bacon",
+    "name": "bacon",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Ham",
+    "name": "ham",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Sausage",
+    "name": "sausage",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Hot Dogs",
+    "name": "hot dogs",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Deli Turkey",
+    "name": "deli turkey",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Deli Ham",
+    "name": "deli ham",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Salami",
+    "name": "salami",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Pepperoni",
+    "name": "pepperoni",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Meatballs",
+    "name": "meatballs",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Lamb Chops",
+    "name": "lamb chops",
     "category": "Meat",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Salmon",
+    "name": "salmon",
     "category": "Seafood",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Tilapia",
+    "name": "tilapia",
     "category": "Seafood",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Shrimp",
+    "name": "shrimp",
     "category": "Seafood",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Tuna",
+    "name": "tuna",
     "category": "Seafood",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cod",
+    "name": "cod",
     "category": "Seafood",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Catfish",
+    "name": "catfish",
     "category": "Seafood",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Crab Meat",
+    "name": "crab meat",
     "category": "Seafood",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Lobster Tails",
+    "name": "lobster tails",
     "category": "Seafood",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Fish Sticks",
+    "name": "fish sticks",
     "category": "Seafood",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Canned Tuna",
+    "name": "canned tuna",
     "category": "Seafood",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Canned Salmon",
+    "name": "canned salmon",
     "category": "Seafood",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Scallops",
+    "name": "scallops",
     "category": "Seafood",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Mussels",
+    "name": "mussels",
     "category": "Seafood",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "White Rice",
+    "name": "white rice",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Brown Rice",
+    "name": "brown rice",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Jasmine Rice",
+    "name": "jasmine rice",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Basmati Rice",
+    "name": "basmati rice",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Pasta",
+    "name": "pasta",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Spaghetti",
+    "name": "spaghetti",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Macaroni",
+    "name": "macaroni",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Lasagna Noodles",
+    "name": "lasagna noodles",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Ramen Noodles",
+    "name": "ramen noodles",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Flour",
+    "name": "flour",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cornmeal",
+    "name": "cornmeal",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Sugar",
+    "name": "sugar",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Brown Sugar",
+    "name": "brown sugar",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Powdered Sugar",
+    "name": "powdered sugar",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Salt",
+    "name": "salt",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Black Pepper",
+    "name": "black pepper",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Garlic Powder",
+    "name": "garlic powder",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Onion Powder",
+    "name": "onion powder",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Paprika",
+    "name": "paprika",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cinnamon",
+    "name": "cinnamon",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Olive Oil",
+    "name": "olive oil",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Vegetable Oil",
+    "name": "vegetable oil",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Canola Oil",
+    "name": "canola oil",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Vinegar",
+    "name": "vinegar",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Apple Cider Vinegar",
+    "name": "apple cider vinegar",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Ketchup",
+    "name": "ketchup",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Mustard",
+    "name": "mustard",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Mayonnaise",
+    "name": "mayonnaise",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Hot Sauce",
+    "name": "hot sauce",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Soy Sauce",
+    "name": "soy sauce",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Barbecue Sauce",
+    "name": "barbecue sauce",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Pasta Sauce",
+    "name": "pasta sauce",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Tomato Sauce",
+    "name": "tomato sauce",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Tomato Paste",
+    "name": "tomato paste",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Peanut Butter",
+    "name": "peanut butter",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Jelly",
+    "name": "jelly",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Honey",
+    "name": "honey",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Maple Syrup",
+    "name": "maple syrup",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cereal",
+    "name": "cereal",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Oatmeal",
+    "name": "oatmeal",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Pancake Mix",
+    "name": "pancake mix",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Coffee",
+    "name": "coffee",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Tea",
+    "name": "tea",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Canned Beans",
+    "name": "canned beans",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Black Beans",
+    "name": "black beans",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Kidney Beans",
+    "name": "kidney beans",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Chickpeas",
+    "name": "chickpeas",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Lentils",
+    "name": "lentils",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Canned Corn",
+    "name": "canned corn",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Canned Tomatoes",
+    "name": "canned tomatoes",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Chicken Broth",
+    "name": "chicken broth",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Beef Broth",
+    "name": "beef broth",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Breadcrumbs",
+    "name": "breadcrumbs",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Baking Soda",
+    "name": "baking soda",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Baking Powder",
+    "name": "baking powder",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Vanilla Extract",
+    "name": "vanilla extract",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Coconut Milk Canned",
+    "name": "coconut milk canned",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Evaporated Milk",
+    "name": "evaporated milk",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Condensed Milk",
+    "name": "condensed milk",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Taco Shells",
+    "name": "taco shells",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Taco Seasoning",
+    "name": "taco seasoning",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Soup",
+    "name": "soup",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Instant Potatoes",
+    "name": "instant potatoes",
     "category": "Pantry",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Frozen Pizza",
+    "name": "frozen pizza",
     "category": "Frozen",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Frozen Vegetables",
+    "name": "frozen vegetables",
     "category": "Frozen",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Frozen Fruit",
+    "name": "frozen fruit",
     "category": "Frozen",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "French Fries",
+    "name": "french fries",
     "category": "Frozen",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Tater Tots",
+    "name": "tater tots",
     "category": "Frozen",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Ice Cream",
+    "name": "ice cream",
     "category": "Frozen",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Frozen Chicken Nuggets",
+    "name": "frozen chicken nuggets",
     "category": "Frozen",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Frozen Fish",
+    "name": "frozen fish",
     "category": "Frozen",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Frozen Waffles",
+    "name": "frozen waffles",
     "category": "Frozen",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Frozen Pancakes",
+    "name": "frozen pancakes",
     "category": "Frozen",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Frozen Burritos",
+    "name": "frozen burritos",
     "category": "Frozen",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Frozen Dinners",
+    "name": "frozen dinners",
     "category": "Frozen",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Frozen Meatballs",
+    "name": "frozen meatballs",
     "category": "Frozen",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Frozen Garlic Bread",
+    "name": "frozen garlic bread",
     "category": "Frozen",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Frozen Corn",
+    "name": "frozen corn",
     "category": "Frozen",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Frozen Broccoli",
+    "name": "frozen broccoli",
     "category": "Frozen",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Frozen Spinach",
+    "name": "frozen spinach",
     "category": "Frozen",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Bottled Water",
+    "name": "bottled water",
     "category": "Beverages",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Sparkling Water",
+    "name": "sparkling water",
     "category": "Beverages",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Orange Juice",
+    "name": "orange juice",
     "category": "Beverages",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Apple Juice",
+    "name": "apple juice",
     "category": "Beverages",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cranberry Juice",
+    "name": "cranberry juice",
     "category": "Beverages",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Lemonade",
+    "name": "lemonade",
     "category": "Beverages",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Soda",
+    "name": "soda",
     "category": "Beverages",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Diet Soda",
+    "name": "diet soda",
     "category": "Beverages",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Sports Drink",
+    "name": "sports drink",
     "category": "Beverages",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Energy Drink",
+    "name": "energy drink",
     "category": "Beverages",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Iced Tea",
+    "name": "iced tea",
     "category": "Beverages",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Coconut Water",
+    "name": "coconut water",
     "category": "Beverages",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Hot Chocolate",
+    "name": "hot chocolate",
     "category": "Beverages",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Fruit Punch",
+    "name": "fruit punch",
     "category": "Beverages",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Grape Juice",
+    "name": "grape juice",
     "category": "Beverages",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Potato Chips",
+    "name": "potato chips",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Tortilla Chips",
+    "name": "tortilla chips",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Popcorn",
+    "name": "popcorn",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Crackers",
+    "name": "crackers",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cookies",
+    "name": "cookies",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Granola Bars",
+    "name": "granola bars",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Protein Bars",
+    "name": "protein bars",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Mixed Nuts",
+    "name": "mixed nuts",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Peanuts",
+    "name": "peanuts",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Trail Mix",
+    "name": "trail mix",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Pretzels",
+    "name": "pretzels",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Fruit Snacks",
+    "name": "fruit snacks",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Pudding Cups",
+    "name": "pudding cups",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Applesauce",
+    "name": "applesauce",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Chocolate",
+    "name": "chocolate",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Candy",
+    "name": "candy",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Beef Jerky",
+    "name": "beef jerky",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Rice Cakes",
+    "name": "rice cakes",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cheese Crackers",
+    "name": "cheese crackers",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Snack Cakes",
+    "name": "snack cakes",
     "category": "Snacks",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Paper Towels",
+    "name": "paper towels",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Toilet Paper",
+    "name": "toilet paper",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Trash Bags",
+    "name": "trash bags",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Dish Soap",
+    "name": "dish soap",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Dishwasher Detergent",
+    "name": "dishwasher detergent",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Laundry Detergent",
+    "name": "laundry detergent",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Fabric Softener",
+    "name": "fabric softener",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Bleach",
+    "name": "bleach",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "All-Purpose Cleaner",
+    "name": "all-purpose cleaner",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Glass Cleaner",
+    "name": "glass cleaner",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Disinfecting Wipes",
+    "name": "disinfecting wipes",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Sponges",
+    "name": "sponges",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Aluminum Foil",
+    "name": "aluminum foil",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Plastic Wrap",
+    "name": "plastic wrap",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Parchment Paper",
+    "name": "parchment paper",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Storage Bags",
+    "name": "storage bags",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Paper Plates",
+    "name": "paper plates",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Plastic Cups",
+    "name": "plastic cups",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Napkins",
+    "name": "napkins",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Light Bulbs",
+    "name": "light bulbs",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Batteries",
+    "name": "batteries",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Air Freshener",
+    "name": "air freshener",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Mop Cleaner",
+    "name": "mop cleaner",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Broom",
+    "name": "broom",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Rubber Gloves",
+    "name": "rubber gloves",
     "category": "Household",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Shampoo",
+    "name": "shampoo",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Conditioner",
+    "name": "conditioner",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Body Wash",
+    "name": "body wash",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Bar Soap",
+    "name": "bar soap",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Hand Soap",
+    "name": "hand soap",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Toothpaste",
+    "name": "toothpaste",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Toothbrush",
+    "name": "toothbrush",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Dental Floss",
+    "name": "dental floss",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Mouthwash",
+    "name": "mouthwash",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Deodorant",
+    "name": "deodorant",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Razor Blades",
+    "name": "razor blades",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Shaving Cream",
+    "name": "shaving cream",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Lotion",
+    "name": "lotion",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Face Wash",
+    "name": "face wash",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Sunscreen",
+    "name": "sunscreen",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cotton Swabs",
+    "name": "cotton swabs",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cotton Balls",
+    "name": "cotton balls",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Tissues",
+    "name": "tissues",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Feminine Products",
+    "name": "feminine products",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Hair Gel",
+    "name": "hair gel",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Hair Spray",
+    "name": "hair spray",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Lip Balm",
+    "name": "lip balm",
     "category": "Personal Care",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Diapers",
+    "name": "diapers",
     "category": "Baby",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Baby Wipes",
+    "name": "baby wipes",
     "category": "Baby",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Baby Formula",
+    "name": "baby formula",
     "category": "Baby",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Baby Food",
+    "name": "baby food",
     "category": "Baby",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Baby Cereal",
+    "name": "baby cereal",
     "category": "Baby",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Baby Shampoo",
+    "name": "baby shampoo",
     "category": "Baby",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Baby Lotion",
+    "name": "baby lotion",
     "category": "Baby",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Diaper Rash Cream",
+    "name": "diaper rash cream",
     "category": "Baby",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Baby Bottles",
+    "name": "baby bottles",
     "category": "Baby",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Pacifiers",
+    "name": "pacifiers",
     "category": "Baby",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Baby Water",
+    "name": "baby water",
     "category": "Baby",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Baby Laundry Detergent",
+    "name": "baby laundry detergent",
     "category": "Baby",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Dog Food",
+    "name": "dog food",
     "category": "Pet Supplies",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cat Food",
+    "name": "cat food",
     "category": "Pet Supplies",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Dog Treats",
+    "name": "dog treats",
     "category": "Pet Supplies",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cat Treats",
+    "name": "cat treats",
     "category": "Pet Supplies",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Cat Litter",
+    "name": "cat litter",
     "category": "Pet Supplies",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Dog Shampoo",
+    "name": "dog shampoo",
     "category": "Pet Supplies",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Pet Waste Bags",
+    "name": "pet waste bags",
     "category": "Pet Supplies",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Bird Food",
+    "name": "bird food",
     "category": "Pet Supplies",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Fish Food",
+    "name": "fish food",
     "category": "Pet Supplies",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Pet Stain Remover",
+    "name": "pet stain remover",
     "category": "Pet Supplies",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Birthday Candles",
+    "name": "birthday candles",
     "category": "Other",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Greeting Card",
+    "name": "greeting card",
     "category": "Other",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Flowers",
+    "name": "flowers",
     "category": "Other",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Ice",
+    "name": "ice",
     "category": "Other",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Charcoal",
+    "name": "charcoal",
     "category": "Other",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Lighter Fluid",
+    "name": "lighter fluid",
     "category": "Other",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Disposable Cutlery",
+    "name": "disposable cutlery",
     "category": "Other",
     "image_url": null,
     "notes": null
   },
   {
-    "name": "Party Cups",
+    "name": "party cups",
     "category": "Other",
     "image_url": null,
     "notes": null

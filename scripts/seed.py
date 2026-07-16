@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from sqlalchemy import select
+from sqlalchemy import select, text
 from backend.app.db.models.category import CategoryTable
 from backend.app.db.models.product import ProductTable
 from backend.app.db.session import SessionLocal
@@ -59,6 +59,7 @@ def seed_products(db, products, category_map):
         )
 
 
+
 def main():
     categories = load_json(CATEGORIES_PATH)
     products = load_json(PRODUCTS_PATH)
@@ -66,6 +67,9 @@ def main():
     with SessionLocal() as db:
         category_map = seed_categories(db, categories)
         seed_products(db, products, category_map)
+
+        #db.execute(delete(ProductTable))
+        #db.execute(text("TRUNCATE TABLE products RESTART IDENTITY CASCADE"))
         db.commit()
 
     print("Seed data loaded.")
