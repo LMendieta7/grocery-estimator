@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
 from backend.app.db.session import get_db
-from backend.app.schemas.product import ProductResponse, ProductCreateRequest, DeleteProductResponse
+from backend.app.schemas.product import ProductResponse, ProductCreateRequest, DeleteProductResponse, ProductPatchRequest
 
 from backend.app.services.product import ProductService
 from backend.app.repository.product import ProductRepository
@@ -72,4 +72,24 @@ def delete_products(
         "message": "Product deleted", 
         "product_id": product.id,
         "product_name": product.name,
+    }
+
+@router.patch("/products/{product_id}")
+def update_products(
+    product_id: int,
+    product_patch_request: ProductPatchRequest,
+    db: Session = Depends(get_db),
+):
+    repository = ProductRepository(db)
+    category_repository = CategoryRepository(db)
+    service = ProductService(repository, category_repository, db)
+    product = service.update_product(product_id, product_patch_request)
+
+    if product is None:
+        raise HTTPException(status_code=404, detail="Product or category not found")
+
+    return {
+        "message": "Product updated",
+        "product_id": product.id,
+        "product_name": product.name
     }

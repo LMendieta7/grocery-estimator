@@ -9,13 +9,9 @@ class ProductRepository:
     def __init__(self, db: Session):
         self.db = db
 
-    def get_product_by_id(self, product_id: int):
-        statement = (
-            select(ProductTable)
-            .where(ProductTable.id == product_id)
-        )
-
-        return self.db.scalar(statement)
+    def get_by_id(self, product_id: int):
+        # Fetch by primary key using the current database session.
+        return self.db.get(ProductTable, product_id)
 
     def get_by_exact_name(self, product_name: str):
         statement = (
@@ -46,3 +42,9 @@ class ProductRepository:
         self.db.delete(product)
         self.db.flush()
         return product
+    
+    def update(self, product: ProductTable):
+        self.db.flush()
+        return product
+
+    

@@ -1,5 +1,4 @@
 from decimal import Decimal
-
 from backend.app.schemas.product import ProductResponse
 from backend.app.db.models.product import ProductTable
 
@@ -69,7 +68,7 @@ class ProductService:
         )
 
     def delete_product(self, product_id):
-        product = self.product_repository.get_product_by_id(product_id)
+        product = self.product_repository.get_by_id(product_id)
 
         if product is None:
             return None
@@ -77,4 +76,25 @@ class ProductService:
         self.product_repository.delete(product)
 
         self.db.commit()
+        return product
+    
+    def update_product(self, product_id, product_update_request):
+        product = self.product_repository.get_by_id(product_id)
+
+        if product is None:
+            return None
+        
+        update_data = product_update_request.model_dump(exclude_unset=True)
+
+        if "category_id" in update_data:
+            category = self.category_repository.get_by_id(update_data["category_id"])
+            if category is None:
+                return None
+
+        for field, value in update_data.items():
+            setattr(product, field, value)
+        
+        self.product_repository.update(product)
+        self.db.commit()
+        self.db.refresh(product)
         return product

@@ -9,9 +9,5 @@ class CategoryRepository:
         self.db = db
 
     def get_by_id(self, category_id: int):
-        statement = (
-            select(CategoryTable)
-            .where(CategoryTable.id == category_id)
-        )
-
-        return self.db.scalar(statement)
+        # Fetch by primary key using the current database session.
+        return self.db.get(CategoryTable, category_id)

@@ -21,3 +21,11 @@ class ProductCreateRequest(BaseModel):
     estimated_price: Decimal | None = None
     image_url: str | None = None
     notes: str | None = None
+
+
+class ProductPatchRequest(BaseModel):
+    name: str | None = Field(default=None, min_length=1)
+    category_id: int | None = None
+    estimated_price: Decimal | None = None
+    image_url: str | None = None
+    notes: str | None = None
