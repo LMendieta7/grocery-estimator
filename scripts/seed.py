@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from sqlalchemy import select, text
+from sqlalchemy import select
 from backend.app.db.models.category import CategoryTable
 from backend.app.db.models.product import ProductTable
 from backend.app.db.session import SessionLocal

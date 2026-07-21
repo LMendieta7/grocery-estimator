@@ -23,7 +23,7 @@ class ProductCreateRequest(BaseModel):
     notes: str | None = None
 
 
-class ProductPatchRequest(BaseModel):
+class ProductUpdateRequest(BaseModel):
     name: str | None = Field(default=None, min_length=1)
     category_id: int | None = None
     estimated_price: Decimal | None = None
