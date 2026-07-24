@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, ForeignKey, Text
+from sqlalchemy import Boolean, ForeignKey, Text, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
 
 from backend.app.db.base import Base
@@ -7,6 +7,14 @@ from backend.app.db.base import Base
 class ShoppingListItemTable(Base):
     __tablename__ = "shopping_list_items"
 
+    __table_args__ = (
+        UniqueConstraint(
+            "shopping_list_id",
+            "product_id",
+            name="uq_shopping_list_product",
+        ),
+    )
+
     id: Mapped[int] = mapped_column(primary_key=True)
 
     shopping_list_id: Mapped[int] = mapped_column(
@@ -14,7 +22,7 @@ class ShoppingListItemTable(Base):
         nullable=False,
     )
 
-    product_id: Mapped[int | None] = mapped_column(
+    product_id: Mapped[int] = mapped_column(
         ForeignKey("products.id"),
         nullable=False,
     )

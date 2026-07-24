@@ -4,7 +4,9 @@ from backend.app.api.routes.product import router as product_router
 from backend.app.api.routes.shopping_list import (
     router as shopping_list_router,
 )
-
+from backend.app.api.routes.shopping_list_item import(
+    router as shopping_list_item_router,
+)
 
 def create_app() -> FastAPI:
     app = FastAPI(
@@ -22,7 +24,7 @@ def create_app() -> FastAPI:
 
     app.include_router(product_router, prefix="/api", tags=["products"])
     app.include_router(shopping_list_router, prefix="/api", tags=["shopping lists"],)
-
+    app.include_router(shopping_list_item_router, prefix="/api", tags=["shopping lists item"],)
     return app
 
 

@@ -3,13 +3,11 @@ import { searchProducts } from "../services/productApi";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 
-function ProductSearch({ onAddProduct }) {
+function ProductSearch({ onAddProductToList }) {
     const [search, setSearch] = useState("");
     const [suggestions, setSuggestions] = useState([]);
     const [error, setError] = useState("");
     
-   
-
     useEffect(() => {
         const searchText = search.trim();
 
@@ -53,14 +51,19 @@ function ProductSearch({ onAddProduct }) {
         }
     }
 
-    function handleProductSelect(_event, product) {
+    async function handleProductSelect(_event, product) {
         if (!product) {
             return;
         }
-        
-        onAddProduct(product);
-        setSearch("");
-        setSuggestions([]);
+
+        try {
+            await onAddProductToList(product);
+            setSearch("");
+            setSuggestions([]);
+            setError("");
+        } catch {
+            setError("Could not add product to the shopping list.");
+        }
     }
     
     return (

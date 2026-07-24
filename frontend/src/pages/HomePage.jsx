@@ -1,26 +1,61 @@
-import { useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import ProductSearch from "../components/ProductSearch";
 import ShoppingList from "../components/ShoppingList";
 import ListSelector from "../components/ListSelector";
+import SummaryBar from "../components/SummaryBar";
 import Header from "../components/Header";
 import Box from "@mui/material/Box";
 
+import { addProductToShoppingList } from "../services/shoppingListItemApi";
+import { getShoppingListDetail } from "../services/shoppingListApi";
+
+
+
 function HomePage() {
-  const [selectedProducts, setSelectedProducts] = useState([]);
+  const [selectedListId, setSelectedListId] = useState("");
+  const [shoppingListDetail, setShoppingListDetail] = useState(null);
 
-  function addProduct(product) {
-    setSelectedProducts((currentProducts) => {
-      const alreadyAdded = currentProducts.some(
-        (currentProduct) => currentProduct.id === product.id,
-      );
-
-      if (alreadyAdded) {
-        return currentProducts;
+  useEffect(() => {
+    async function loadShoppingListDetails() {
+      if (!selectedListId) {
+        return;
       }
 
-      return [...currentProducts, product];
-    });
-  }
+      try {
+        const listDetails = await getShoppingListDetail(selectedListId);
+        setShoppingListDetail(listDetails);
+  
+      } catch (error) {
+        console.error("Failed to load shopping list details:", error);
+      }
+    }
+
+    loadShoppingListDetails();
+  }, [selectedListId]);
+
+  async function addProductToList(product) {
+    if (!selectedListId) {
+      return;
+    }
+
+
+    const itemRequest = {
+      product_id: product.id,
+      quantity: 1,
+      notes: product.notes ?? null,
+    };
+
+    await addProductToShoppingList(selectedListId, itemRequest);
+    const updateDetail = await getShoppingListDetail(selectedListId);
+    setShoppingListDetail(updateDetail);
+
+    }
+
+  const handleListSelect = useCallback((listId) => {
+    setSelectedListId(listId);
+    
+  }, []);
+
 
   return (
     <>
@@ -33,9 +68,19 @@ function HomePage() {
           p: 2,
         }}
       > 
-        <ListSelector />
-        <ProductSearch onAddProduct={addProduct} />
-        <ShoppingList products={selectedProducts} />
+        <ListSelector 
+          onSelectList={handleListSelect}
+          selectedListId={selectedListId}
+
+        />
+        <ProductSearch onAddProductToList={addProductToList} />
+        
+        {shoppingListDetail && (
+        <>
+          <SummaryBar shoppingListDetail={shoppingListDetail} />
+          <ShoppingList items={shoppingListDetail.items} />
+        </>
+      )}
       </Box>
     </>
     

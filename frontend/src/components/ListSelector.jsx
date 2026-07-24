@@ -1,4 +1,4 @@
-import { getAllShoppingLists } from "../services/shoppingListApi";
+import { getAllShoppingLists} from "../services/shoppingListApi";
 import { useEffect, useState } from "react";
 
 import FormControl from "@mui/material/FormControl";
@@ -11,13 +11,12 @@ import AddIcon from "@mui/icons-material/Add";
 
 
 
-function ListSelector({ onAddList }){
+function ListSelector({ selectedListId, onSelectList, onAddList }){
     const [shoppingLists, setShoppingLists] = useState([]);
-    const [selectedListId, setSelectedListId] = useState("");
 
     function handleListChange(event) {
         const newListId = event.target.value;
-        setSelectedListId(newListId);
+        onSelectList(newListId);
     }
         useEffect(() => {
         async function loadShoppingLists() {
@@ -25,13 +24,13 @@ function ListSelector({ onAddList }){
 
             setShoppingLists(lists);
             if (lists.length > 0) {
-                setSelectedListId(lists[0].id);
+                onSelectList(lists[0].id);
             }
             
         }
 
         loadShoppingLists();
-    }, []);
+    }, [onSelectList]);
     return (
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <FormControl size="small" sx={{ minWidth: 200 }}>

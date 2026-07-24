@@ -13,6 +13,15 @@ class ProductRepository:
         # Fetch by primary key using the current database session.
         return self.db.get(ProductTable, product_id)
 
+    def get_by_id_with_category(self, product_id: int):
+        statement = (
+            select(ProductTable, CategoryTable)
+            .join(CategoryTable, ProductTable.category_id == CategoryTable.id)
+            .where(ProductTable.id == product_id)
+        )
+
+        return self.db.execute(statement).first()
+
     def get_by_exact_name(self, product_name: str):
         statement = (
             select(ProductTable, CategoryTable)
