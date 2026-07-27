@@ -8,6 +8,7 @@ import Box from "@mui/material/Box";
 
 import { addProductToShoppingList } from "../services/shoppingListItemApi";
 import { getShoppingListDetail } from "../services/shoppingListApi";
+import { deleteShoppingListItem } from "../services/shoppingListItemApi";
 
 
 
@@ -42,11 +43,10 @@ function HomePage() {
     const itemRequest = {
       product_id: product.id,
       quantity: 1,
-      notes: product.notes ?? null,
     };
 
-    await addProductToShoppingList(selectedListId, itemRequest);
-    const updateDetail = await getShoppingListDetail(selectedListId);
+    const updateDetail = await addProductToShoppingList(selectedListId, itemRequest);
+
     setShoppingListDetail(updateDetail);
 
     }
@@ -56,6 +56,13 @@ function HomePage() {
     
   }, []);
 
+  async function deleteItemFromList(itemId) {
+    if (!selectedListId) {
+        return;
+      }
+    const updateDetail = await deleteShoppingListItem(selectedListId, itemId);
+    setShoppingListDetail(updateDetail);
+  }
 
   return (
     <>
@@ -78,7 +85,7 @@ function HomePage() {
         {shoppingListDetail && (
         <>
           <SummaryBar shoppingListDetail={shoppingListDetail} />
-          <ShoppingList items={shoppingListDetail.items} />
+          <ShoppingList items={shoppingListDetail.items} onDelete={deleteItemFromList}/>
         </>
       )}
       </Box>

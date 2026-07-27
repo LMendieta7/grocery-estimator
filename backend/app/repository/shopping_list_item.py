@@ -44,3 +44,8 @@ class ShoppingListItemRepository:
         self.db.add(item)
         self.db.flush()
         return item
+
+    def delete(self, item: ShoppingListItemTable):
+        self.db.delete(item)
+        self.db.flush()
+        

@@ -3,11 +3,30 @@ import ListItem from "@mui/material/ListItem";
 import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import EditIcon from "@mui/icons-material/Edit";
+import EditItemDialog from "./EditItemDialog";
 
-function ShoppingList({ items }) {
+import { useState } from "react";
+
+function ShoppingList({ items, onDelete}) {
+
+    const [selectedItem, setSelectedItem] = useState(null);
+   
+
+    function handleClose() {
+        setSelectedItem(null);
+    }
+    
+
     return (
-        <Box component="section">
+        <Box
+            component="section"
+            sx={{
+                minWidth: 0,
+               
+            }}
+        >
             <List>
                 {items.map((item) => (
                     <ListItem
@@ -21,26 +40,35 @@ function ShoppingList({ items }) {
                                 display: "flex",
                                 alignItems: "flex-start",
                                 width: "100%",
+                                minWidth: 0,
                                 gap: 2,
                             }}
                         >
                             <Checkbox
                                 checked={item.is_checked}
-                                sx={{ pl: 0, mt: 0.25 }}
+                                
+                                size="small"
+                                sx={{ pl: 0,
+                                    mt: 0.25,
+                                    // '& .MuiSvgIcon-root': { fontSize: 22 } 
+                                }}
                             />
 
-                            <Box sx={{ flex: 1 }}>
-                                <Typography sx={{ fontWeight: 600 }}>
+                            <Box sx={{ flex: 1, minWidth: 0 }}>
+                                <Typography
+                                    noWrap
+                                    sx={{
+                                        fontWeight: 600,    
+                                    }}
+                                >
                                     {item.product_name_snapshot}
                                 </Typography>
 
                                 <Typography
+                                    noWrap
                                     variant="body2"
                                     color="text.secondary"
-                                    sx={{ mt: 0.2, 
-                                        overflow:"hidden",
-                                        textOverflow:"ellipsis",
-                                        whiteSpace:"nowrap",
+                                    sx={{ mt: 0.2,                                         
                                         fontStyle:"italic"
                                     }}
                                 >
@@ -49,11 +77,28 @@ function ShoppingList({ items }) {
                     
                                     {item.notes &&` •  ${item.notes}`}
                                 </Typography>
+                              
                             </Box>
+                                <IconButton
+                                    aria-label={`Edit ${item.product_name_snapshot}`}
+                                    onClick={()=> setSelectedItem(item)}
+                                    size="small"
+                                    color="primary "
+                                    >
+                                    <EditIcon fontSize="small" />
+                                </IconButton>
                         </Box>
                     </ListItem>
+                    
                 ))}
             </List>
+            { selectedItem && (
+            <EditItemDialog
+                onClose={handleClose}
+                item={selectedItem}
+                onDelete={onDelete}
+            />
+            )}
         </Box>
     );
 }

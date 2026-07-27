@@ -1,7 +1,7 @@
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "/api";
 
-export async function addProductToShoppingList(shopping_list_id, product){
-    const response = await fetch(`${API_BASE_URL}/shopping-lists/${shopping_list_id}/items`, {
+export async function addProductToShoppingList(shoppingListId, product){
+    const response = await fetch(`${API_BASE_URL}/shopping-lists/${shoppingListId}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -17,3 +17,16 @@ export async function addProductToShoppingList(shopping_list_id, product){
     return data;
 }
 
+export async function deleteShoppingListItem(shoppingListId, itemId){
+    const response = await fetch(`${API_BASE_URL}/shopping-lists/${shoppingListId}/items/${itemId}`,
+    {
+      method: "DELETE",
+    }
+    );
+
+    if (!response.ok) {
+        throw new Error("Could not delete item");
+    }
+    const data = await response.json();
+    return data
+}

@@ -2,9 +2,6 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-// checked_count: int
-//     total_count: int
-//     estimated_total: Decimal
 
 function SummaryBar({ shoppingListDetail }){
     return (
@@ -12,9 +9,9 @@ function SummaryBar({ shoppingListDetail }){
             variant="outlined"
             sx={{
                 px: 2,
-                py: 1.5,
-                borderRadius: 2,
-                bgcolor: "inherit",
+                py: 1.4,
+                borderRadius: 1,
+                bgcolor: "lightblue",
             }}
         >
             <Stack>

@@ -23,7 +23,6 @@ class ProductService:
             category=category.name,
             estimated_price=product.estimated_price,
             image_url=product.image_url,
-            notes=product.notes,
         )
     
     def search_products_by_name(self, query: str):
@@ -35,7 +34,6 @@ class ProductService:
             category=category.name,
             estimated_price=product.estimated_price,
             image_url=product.image_url,
-            notes=product.notes,
         )
         for product, category in rows
         ]
@@ -51,7 +49,6 @@ class ProductService:
             category_id=category.id,
             estimated_price=request.estimated_price or Decimal("0.00"),
             image_url=request.image_url,
-            notes=request.notes
         )
 
         product = self.product_repository.create(product)
@@ -64,7 +61,6 @@ class ProductService:
             category=category.name,
             estimated_price=product.estimated_price,
             image_url=product.image_url,
-            notes=product.notes,
         )
 
     def delete_product(self, product_id):

@@ -8,7 +8,6 @@ class ProductResponse(BaseModel):
     category: str
     estimated_price: Decimal
     image_url: str | None
-    notes: str | None
 
 class DeleteProductResponse(BaseModel):
     message: str
@@ -20,7 +19,6 @@ class ProductCreateRequest(BaseModel):
     category_id: int
     estimated_price: Decimal | None = None
     image_url: str | None = None
-    notes: str | None = None
 
 
 class ProductUpdateRequest(BaseModel):
@@ -28,4 +26,3 @@ class ProductUpdateRequest(BaseModel):
     category_id: int | None = None
     estimated_price: Decimal | None = None
     image_url: str | None = None
-    notes: str | None = None

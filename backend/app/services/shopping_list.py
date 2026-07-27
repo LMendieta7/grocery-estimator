@@ -1,12 +1,20 @@
 from backend.app.schemas.shopping_list import GetAllListResponse, ShoppingListDetailResponse
 from backend.app.schemas.shopping_list_item import ShoppingListItemResponse
+from backend.app.db.models.shopping_list_item import ShoppingListItemTable
 from decimal import Decimal
 
 class ShoppingListService:
-    def __init__(self, db, shopping_list_repository, shopping_list_item_repository):
+    def __init__(
+        self,
+        db,
+        shopping_list_repository,
+        shopping_list_item_repository,
+        product_repository,
+    ):
         self.db = db
         self.shopping_list_repository=shopping_list_repository
         self.shopping_list_item_repository=shopping_list_item_repository
+        self.product_repository = product_repository
         
     
     def get_all_lists(self):
@@ -64,3 +72,41 @@ class ShoppingListService:
         ) 
             
         return response
+
+    def add_item(self, shopping_list_id: int, request):
+        shopping_list = self.shopping_list_repository.get_by_id(shopping_list_id)
+
+        if shopping_list is None:
+            return None
+
+        product_with_category = self.product_repository.get_by_id_with_category(
+            request.product_id
+        )
+        if product_with_category is None:
+            return None
+
+        product, _category = product_with_category
+        item = ShoppingListItemTable(
+            shopping_list_id=shopping_list.id,
+            product_id=product.id,
+            product_name_snapshot=product.name,
+            quantity=request.quantity,
+            notes=request.notes,
+            is_checked=False,
+        )
+
+        self.shopping_list_item_repository.create(item)
+        self.db.commit()
+
+        return self.get_list_detail(shopping_list_id)
+
+    def delete_item(self, shopping_list_id: int, item_id: int):
+        item = self.shopping_list_item_repository.get_by_id(item_id)
+
+        if item is None or item.shopping_list_id != shopping_list_id:
+            return None
+
+        self.shopping_list_item_repository.delete(item)
+        self.db.commit()
+
+        return self.get_list_detail(shopping_list_id)

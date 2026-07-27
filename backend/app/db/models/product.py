@@ -17,5 +17,3 @@ class ProductTable(Base):
 
     estimated_price: Mapped[Decimal] = mapped_column(Numeric(10,2), default=Decimal("0.00"), nullable=False)
     image_url: Mapped[str | None] = mapped_column(Text, nullable=True)
-    notes: Mapped[str | None] = mapped_column(Text, nullable=True)
-    
