@@ -26,3 +26,37 @@ export async function getShoppingListDetail(shoppingListId) {
 
   return response.json();
 }
+
+export async function addProductToShoppingList(shoppingListId, item) {
+  const response = await fetch(
+    `${API_BASE_URL}/shopping-lists/${shoppingListId}/items`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(item),
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error("Could not add product to shopping list");
+  }
+
+  return response.json();
+}
+
+export async function deleteShoppingListItem(shoppingListId, itemId) {
+  const response = await fetch(
+    `${API_BASE_URL}/shopping-lists/${shoppingListId}/items/${itemId}`,
+    {
+      method: "DELETE",
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error("Could not delete shopping list item");
+  }
+
+  return response.json();
+}

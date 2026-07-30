@@ -1,0 +1,119 @@
+from decimal import Decimal
+
+from sqlalchemy import select
+from sqlalchemy.orm import Session
+
+from backend.app.categories.models import CategoryTable
+from backend.app.products.models import ProductTable
+from backend.app.shopping_lists.models import (
+    ShoppingListItemTable,
+    ShoppingListTable,
+)
+from backend.app.shopping_lists.schemas import (
+    GetAllListResponse,
+    ShoppingListDetailResponse,
+    ShoppingListItemResponse,
+)
+
+
+class ShoppingListService:
+    def __init__(self, db: Session):
+        self.db = db
+
+    def get_all_lists(self):
+        rows = self.db.scalars(
+            select(ShoppingListTable).order_by(ShoppingListTable.id)
+        ).all()
+        return [
+            GetAllListResponse(
+                id=row.id,
+                name=row.name,
+                created_at=row.created_at,
+            )
+            for row in rows
+        ]
+
+    def get_list_detail(self, shopping_list_id: int):
+        shopping_list = self.db.get(ShoppingListTable, shopping_list_id)
+        if shopping_list is None:
+            return None
+
+        statement = (
+            select(ShoppingListItemTable, ProductTable, CategoryTable)
+            .join(
+                ProductTable,
+                ShoppingListItemTable.product_id == ProductTable.id,
+            )
+            .join(
+                CategoryTable,
+                ProductTable.category_id == CategoryTable.id,
+            )
+            .where(
+                ShoppingListItemTable.shopping_list_id == shopping_list_id
+            )
+            .order_by(ShoppingListItemTable.id)
+        )
+        rows = self.db.execute(statement).all()
+        items = []
+        estimated_total = Decimal("0.00")
+        checked_count = 0
+
+        for list_item, product, category in rows:
+            if list_item.is_checked:
+                checked_count += 1
+            estimated_total += list_item.quantity * product.estimated_price
+
+            items.append(
+                ShoppingListItemResponse(
+                    id=list_item.id,
+                    shopping_list_id=list_item.shopping_list_id,
+                    product_id=list_item.product_id,
+                    product_name_snapshot=list_item.product_name_snapshot,
+                    category=category.name,
+                    quantity=list_item.quantity,
+                    estimated_price=product.estimated_price,
+                    notes=list_item.notes,
+                    is_checked=list_item.is_checked,
+                )
+            )
+
+        return ShoppingListDetailResponse(
+            id=shopping_list.id,
+            name=shopping_list.name,
+            items=items,
+            checked_count=checked_count,
+            total_count=len(items),
+            estimated_total=estimated_total,
+        )
+
+    def add_item(self, shopping_list_id: int, request):
+        shopping_list = self.db.get(ShoppingListTable, shopping_list_id)
+        if shopping_list is None:
+            return None
+
+        product = self.db.get(ProductTable, request.product_id)
+        if product is None:
+            return None
+
+        item = ShoppingListItemTable(
+            shopping_list_id=shopping_list.id,
+            product_id=product.id,
+            product_name_snapshot=product.name,
+            quantity=request.quantity,
+            notes=request.notes,
+            is_checked=False,
+        )
+        self.db.add(item)
+        self.db.commit()
+
+        return self.get_list_detail(shopping_list_id)
+
+    def delete_item(self, shopping_list_id: int, item_id: int):
+        item = self.db.get(ShoppingListItemTable, item_id)
+        if item is None or item.shopping_list_id != shopping_list_id:
+            return None
+
+        self.db.delete(item)
+        self.db.commit()
+
+        return self.get_list_detail(shopping_list_id)

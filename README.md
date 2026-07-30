@@ -36,9 +36,10 @@ Test in Swagger with:
 ## Current Structure
 
 ```text
-backend/app/main.py                       # creates FastAPI app and connects routers
-backend/app/api/routes/estimates.py       # HTTP endpoint
-backend/app/schemas/estimate.py           # request/response data shapes
-backend/app/services/estimate_service.py  # business logic
-backend/app/models/grocery_item.py        # internal dataclass model
+backend/app/
+├── core/                 # configuration, database, dependencies, security, exceptions
+├── products/             # router, services, models, schemas
+├── shopping_lists/       # router, services, models, schemas
+├── categories/           # category database model used by products
+└── main.py               # creates FastAPI app and connects feature routers
 ```

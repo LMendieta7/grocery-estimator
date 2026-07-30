@@ -1,7 +1,23 @@
-from sqlalchemy import Boolean, ForeignKey, Text, UniqueConstraint
+from datetime import datetime, timezone
+
+from sqlalchemy import Boolean, DateTime, ForeignKey, Text, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
 
-from backend.app.db.base import Base
+from backend.app.core.database import Base
+
+
+class ShoppingListTable(Base):
+    __tablename__ = "shopping_lists"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(Text, nullable=False)
+
+    # Tracks when the shopping list was created.
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        default=lambda: datetime.now(timezone.utc),
+        nullable=False,
+    )
 
 
 class ShoppingListItemTable(Base):
@@ -16,24 +32,17 @@ class ShoppingListItemTable(Base):
     )
 
     id: Mapped[int] = mapped_column(primary_key=True)
-
     shopping_list_id: Mapped[int] = mapped_column(
         ForeignKey("shopping_lists.id"),
         nullable=False,
     )
-
     product_id: Mapped[int] = mapped_column(
         ForeignKey("products.id"),
         nullable=False,
     )
-
     product_name_snapshot: Mapped[str] = mapped_column(Text, nullable=False)
-
     quantity: Mapped[int] = mapped_column(nullable=False, default=1)
-
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
-
-    # Tracks whether this item has been checked off the list.
     is_checked: Mapped[bool] = mapped_column(
         Boolean,
         nullable=False,

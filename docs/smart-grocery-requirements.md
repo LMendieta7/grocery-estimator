@@ -51,12 +51,8 @@ Services:
 
 - Contain business logic
 - Work with domain dataclasses
-- Coordinate repositories
-
-Repositories:
-
-- Handle database access
-- Own SQLAlchemy queries
+- Handle database access through the injected SQLAlchemy session
+- Own SQLAlchemy queries and transaction boundaries
 
 SQLAlchemy models:
 
@@ -75,14 +71,19 @@ Pydantic schemas:
 ```text
 backend/
     app/
-        api/
-            routes/
         core/
-        db/
-        models/
-        repositories/
-        schemas/
-        services/
+        products/
+            router.py
+            services.py
+            models.py
+            schemas.py
+        shopping_lists/
+            router.py
+            services.py
+            models.py
+            schemas.py
+        categories/
+            models.py
         main.py
 
 frontend/
@@ -357,8 +358,7 @@ Design so these can be added later:
    - Product SQLAlchemy table
    - Product dataclass
    - Product schemas
-   - Product repository
-   - Product service
+   - Product service and database queries
    - Product routes
    - Seed a few useful products
 

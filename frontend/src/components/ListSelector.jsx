@@ -5,13 +5,11 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import AddIcon from "@mui/icons-material/Add";
 
 
 
-function ListSelector({ selectedListId, onSelectList, onAddList }){
+function ListSelector({ selectedListId, onSelectList }){
     const [shoppingLists, setShoppingLists] = useState([]);
 
     function handleListChange(event) {
@@ -31,6 +29,7 @@ function ListSelector({ selectedListId, onSelectList, onAddList }){
 
         loadShoppingLists();
     }, [onSelectList]);
+    
     return (
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <FormControl size="small" sx={{ minWidth: 200 }}>
@@ -50,15 +49,6 @@ function ListSelector({ selectedListId, onSelectList, onAddList }){
                 ))}
                 </Select>
             </FormControl>
-
-            <Button
-                variant="outlined"
-                size="small"
-                startIcon={<AddIcon />}
-                onClick={onAddList}
-            >
-                New list
-            </Button>
         </Box>
     );
 }

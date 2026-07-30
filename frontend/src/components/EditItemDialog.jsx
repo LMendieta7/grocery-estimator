@@ -21,7 +21,7 @@ const inputStyles = {
 };
 
 
-function EditItemDialog({onClose, item, onDelete}) {
+function EditItemDialog({onClose, item, onDeleteItem}) {
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -44,7 +44,7 @@ function EditItemDialog({onClose, item, onDelete}) {
         event.preventDefault();
     }
     async function handleDelete() {
-        await onDelete(item.id);
+        await onDeleteItem(item.id);
         onClose();
     }
 

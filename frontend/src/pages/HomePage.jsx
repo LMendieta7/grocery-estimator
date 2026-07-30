@@ -6,9 +6,11 @@ import SummaryBar from "../components/SummaryBar";
 import Header from "../components/Header";
 import Box from "@mui/material/Box";
 
-import { addProductToShoppingList } from "../services/shoppingListItemApi";
-import { getShoppingListDetail } from "../services/shoppingListApi";
-import { deleteShoppingListItem } from "../services/shoppingListItemApi";
+import {
+  addProductToShoppingList,
+  deleteShoppingListItem,
+  getShoppingListDetail,
+} from "../services/shoppingListApi";
 
 
 
@@ -85,7 +87,10 @@ function HomePage() {
         {shoppingListDetail && (
         <>
           <SummaryBar shoppingListDetail={shoppingListDetail} />
-          <ShoppingList items={shoppingListDetail.items} onDelete={deleteItemFromList}/>
+          <ShoppingList
+            items={shoppingListDetail.items}
+            onDeleteItem={deleteItemFromList}
+          />
         </>
       )}
       </Box>

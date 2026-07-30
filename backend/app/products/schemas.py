@@ -1,5 +1,6 @@
-from pydantic import BaseModel, Field
 from decimal import Decimal
+
+from pydantic import BaseModel, Field
 
 
 class ProductResponse(BaseModel):
@@ -9,10 +10,12 @@ class ProductResponse(BaseModel):
     estimated_price: Decimal
     image_url: str | None
 
-class DeleteProductResponse(BaseModel):
+
+class ProductMutationResponse(BaseModel):
     message: str
     product_id: int
     product_name: str
+
 
 class ProductCreateRequest(BaseModel):
     name: str = Field(min_length=1)

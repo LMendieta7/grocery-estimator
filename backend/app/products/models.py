@@ -1,9 +1,10 @@
-from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy import  String, Text, Numeric, DateTime, UniqueConstraint, ForeignKey
-
 from decimal import Decimal
 
-from backend.app.db.base import Base
+from sqlalchemy import ForeignKey, Numeric, String, Text
+from sqlalchemy.orm import Mapped, mapped_column
+
+from backend.app.core.database import Base
+
 
 class ProductTable(Base):
     __tablename__ = "products"
@@ -15,5 +16,9 @@ class ProductTable(Base):
         nullable=False,
     )
 
-    estimated_price: Mapped[Decimal] = mapped_column(Numeric(10,2), default=Decimal("0.00"), nullable=False)
+    estimated_price: Mapped[Decimal] = mapped_column(
+        Numeric(10, 2),
+        default=Decimal("0.00"),
+        nullable=False,
+    )
     image_url: Mapped[str | None] = mapped_column(Text, nullable=True)

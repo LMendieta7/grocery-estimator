@@ -9,7 +9,7 @@ import EditItemDialog from "./EditItemDialog";
 
 import { useState } from "react";
 
-function ShoppingList({ items, onDelete}) {
+function ShoppingList({ items, onDeleteItem }) {
 
     const [selectedItem, setSelectedItem] = useState(null);
    
@@ -83,7 +83,7 @@ function ShoppingList({ items, onDelete}) {
                                     aria-label={`Edit ${item.product_name_snapshot}`}
                                     onClick={()=> setSelectedItem(item)}
                                     size="small"
-                                    color="primary "
+                                    color="primary"
                                     >
                                     <EditIcon fontSize="small" />
                                 </IconButton>
@@ -96,7 +96,7 @@ function ShoppingList({ items, onDelete}) {
             <EditItemDialog
                 onClose={handleClose}
                 item={selectedItem}
-                onDelete={onDelete}
+                onDeleteItem={onDeleteItem}
             />
             )}
         </Box>
