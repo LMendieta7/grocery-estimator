@@ -5,6 +5,7 @@ from backend.app.shopping_lists.schemas import (
     GetAllListResponse,
     ShoppingListDetailResponse,
     ShoppingListItemCreateRequest,
+    ShoppingListItemUpdateRequest,
 )
 from backend.app.shopping_lists.services import ShoppingListService
 
@@ -66,4 +67,21 @@ def delete_shopping_list_item(
     list_detail = service.delete_item(shopping_list_id, item_id)
     if list_detail is None:
         raise HTTPException(status_code=404, detail="Item not found")
+    return list_detail
+
+
+@router.patch(
+    "/shopping-lists/{shopping_list_id}/items/{item_id}",
+    response_model=ShoppingListDetailResponse,
+)
+def update_shopping_list_item(
+    shopping_list_id: int,
+    item_id: int,
+    request: ShoppingListItemUpdateRequest,
+    service: ShoppingListService = Depends(get_shopping_list_service),
+):
+    list_detail = service.update_item(shopping_list_id, item_id, request)
+    if list_detail is None:
+        raise HTTPException(status_code=404, detail="Item not found")
+
     return list_detail

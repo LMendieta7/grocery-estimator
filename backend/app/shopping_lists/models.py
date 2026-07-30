@@ -50,6 +50,7 @@ class ShoppingListItemTable(Base):
         nullable=False,
     )
     name: Mapped[str] = mapped_column(Text, nullable=False)
+
     category_id: Mapped[int] = mapped_column(
         ForeignKey("categories.id"),
         nullable=False,

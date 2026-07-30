@@ -64,3 +64,9 @@ class ShoppingListItemUpdateRequest(BaseModel):
     image_url: str | None = None
     notes: str | None = None
     is_checked: bool | None = None
+
+class ShoppingListItemMutationResponse(BaseModel):
+    message: str
+    list_id: int
+    list_item_id: int
+    item_name: str

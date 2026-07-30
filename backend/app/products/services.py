@@ -24,7 +24,11 @@ class ProductService:
             return None
 
         product, category = row
-        return self._to_response(product, category)
+        return ProductResponse(
+            id=product.id,
+            name=product.name,
+            category=category.name,
+        )
 
     def search_products_by_name(self, query: str):
         statement = (
@@ -36,7 +40,11 @@ class ProductService:
         )
         rows = self.db.execute(statement).all()
         return [
-            self._to_response(product, category)
+            ProductResponse(
+                id=product.id,
+                name=product.name,
+                category=category.name,
+            )
             for product, category in rows
         ]
 
@@ -53,7 +61,11 @@ class ProductService:
         self.db.flush()
         self.db.commit()
 
-        return self._to_response(product, category)
+        return ProductResponse(
+            id=product.id,
+            name=product.name,
+            category=category.name,
+        )
 
     def delete_product(self, product_id):
         product = self.db.get(ProductTable, product_id)
@@ -81,11 +93,3 @@ class ProductService:
         self.db.commit()
         self.db.refresh(product)
         return product
-
-    @staticmethod
-    def _to_response(product, category):
-        return ProductResponse(
-            id=product.id,
-            name=product.name,
-            category=category.name,
-        )

@@ -127,3 +127,17 @@ class ShoppingListService:
         self.db.commit()
 
         return self.get_list_detail(shopping_list_id)
+
+    def update_item(self, shopping_list_id, item_id, request):
+        item = self.db.get(ShoppingListItemTable, item_id)
+        if item is None or item.shopping_list_id != shopping_list_id:
+            return None
+
+        update_data = request.model_dump(exclude_unset=True)
+
+        for field, value in update_data.items():
+            setattr(item, field, value)
+
+        self.db.commit()
+
+        return self.get_list_detail(shopping_list_id)
