@@ -26,7 +26,7 @@ function EditItemDialog({onClose, item, onDeleteItem}) {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-    const [productName, setProductName] = useState(item.product_name_snapshot ?? "");
+    const [productName, setProductName] = useState(item.product_name ?? "");
     const [category, setCategory] = useState(item.category);
     const [quantity,  setQuantity] = useState(item.quantity);
     const [estimatedPrice, setEstimatedPrice] = useState(item.estimated_price);
@@ -64,7 +64,7 @@ function EditItemDialog({onClose, item, onDeleteItem}) {
                 },
             }}
         >
-            <DialogTitle align="center">Edit {item.product_name_snapshot} </DialogTitle>
+            <DialogTitle align="center">Edit {item.product_name} </DialogTitle>
             <Box component="form" onSubmit={handleSubmit}>
             <DialogContent>
             

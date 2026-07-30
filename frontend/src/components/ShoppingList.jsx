@@ -61,7 +61,7 @@ function ShoppingList({ items, onDeleteItem }) {
                                         fontWeight: 600,    
                                     }}
                                 >
-                                    {item.product_name_snapshot}
+                                    {item.product_name}
                                 </Typography>
 
                                 <Typography
@@ -80,7 +80,7 @@ function ShoppingList({ items, onDeleteItem }) {
                               
                             </Box>
                                 <IconButton
-                                    aria-label={`Edit ${item.product_name_snapshot}`}
+                                    aria-label={`Edit ${item.product_name}`}
                                     onClick={()=> setSelectedItem(item)}
                                     size="small"
                                     color="primary"

@@ -39,14 +39,10 @@ class ShoppingListService:
             return None
 
         statement = (
-            select(ShoppingListItemTable, ProductTable, CategoryTable)
-            .join(
-                ProductTable,
-                ShoppingListItemTable.product_id == ProductTable.id,
-            )
+            select(ShoppingListItemTable, CategoryTable)
             .join(
                 CategoryTable,
-                ProductTable.category_id == CategoryTable.id,
+                ShoppingListItemTable.category_id == CategoryTable.id,
             )
             .where(
                 ShoppingListItemTable.shopping_list_id == shopping_list_id
@@ -58,20 +54,22 @@ class ShoppingListService:
         estimated_total = Decimal("0.00")
         checked_count = 0
 
-        for list_item, product, category in rows:
+        for list_item, category in rows:
             if list_item.is_checked:
                 checked_count += 1
-            estimated_total += list_item.quantity * product.estimated_price
+            estimated_total += (
+                list_item.quantity * list_item.estimated_price
+            )
 
             items.append(
                 ShoppingListItemResponse(
                     id=list_item.id,
                     shopping_list_id=list_item.shopping_list_id,
                     product_id=list_item.product_id,
-                    product_name_snapshot=list_item.product_name_snapshot,
+                    product_name=list_item.name,
                     category=category.name,
                     quantity=list_item.quantity,
-                    estimated_price=product.estimated_price,
+                    estimated_price=list_item.estimated_price,
                     notes=list_item.notes,
                     is_checked=list_item.is_checked,
                 )
@@ -98,7 +96,9 @@ class ShoppingListService:
         item = ShoppingListItemTable(
             shopping_list_id=shopping_list.id,
             product_id=product.id,
-            product_name_snapshot=product.name,
+            name=product.name,
+            category_id=product.category_id,
+            estimated_price=product.estimated_price,
             quantity=request.quantity,
             notes=request.notes,
             is_checked=False,

@@ -1,9 +1,11 @@
 import json
 from pathlib import Path
+
 from sqlalchemy import select
-from backend.app.db.models.category import CategoryTable
-from backend.app.db.models.product import ProductTable
-from backend.app.db.session import SessionLocal
+
+from backend.app.categories.models import CategoryTable
+from backend.app.core.database import SessionLocal
+from backend.app.products.models import ProductTable
 
 SCRIPTS_DIR = Path(__file__).resolve().parent
 
@@ -36,10 +38,9 @@ def seed_categories(db, categories):
 
 
 def seed_products(db, products, category_map):
-    product_names = {
-        name
-        for name in db.scalars(select(ProductTable.name)).all()
-    }
+    product_names = set(
+        db.scalars(select(ProductTable.name)).all()
+    )
 
     for product_data in products:
         name = product_data["name"]
@@ -54,10 +55,8 @@ def seed_products(db, products, category_map):
                 name=name,
                 category_id=category.id,
                 image_url=product_data.get("image_url"),
-                notes=product_data.get("notes"),
             )
         )
-
 
 
 def main():
@@ -67,13 +66,10 @@ def main():
     with SessionLocal() as db:
         category_map = seed_categories(db, categories)
         seed_products(db, products, category_map)
-
-        #db.execute(delete(ProductTable))
-        #db.execute(text("TRUNCATE TABLE products RESTART IDENTITY CASCADE"))
         db.commit()
 
     print("Seed data loaded.")
- 
+
 
 if __name__ == "__main__":
     main()

@@ -1,26 +1,28 @@
-from backend.app.db.models.shopping_list import ShoppingListTable
-from backend.app.db.session import SessionLocal
 from sqlalchemy import select
 
-def seed_list_table(db):
+from backend.app.core.database import SessionLocal
+from backend.app.shopping_lists.models import ShoppingListTable
 
+
+def seed_list_table(db):
     default_list = db.scalar(
-    select(ShoppingListTable).where(ShoppingListTable.id == 1)
-)
+        select(ShoppingListTable).where(
+            ShoppingListTable.name == "Shopping List"
+        )
+    )
     if default_list is not None:
-        print("default list already exist")
-        return 
+        print("Default shopping list already exists.")
+        return
+
     db.add(ShoppingListTable(name="Shopping List"))
-    db.commit()
-    print("list table seeded")
+    print("Default shopping list seeded.")
 
 
 def main():
-    
     with SessionLocal() as db:
-        
         seed_list_table(db)
-           
+        db.commit()
+
 
 if __name__ == "__main__":
     main()

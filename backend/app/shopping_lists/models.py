@@ -1,6 +1,14 @@
 from datetime import datetime, timezone
+from decimal import Decimal
 
-from sqlalchemy import Boolean, DateTime, ForeignKey, Text, UniqueConstraint
+from sqlalchemy import (
+    Boolean,
+    DateTime,
+    ForeignKey,
+    Numeric,
+    Text,
+    UniqueConstraint,
+)
 from sqlalchemy.orm import Mapped, mapped_column
 
 from backend.app.core.database import Base
@@ -40,7 +48,15 @@ class ShoppingListItemTable(Base):
         ForeignKey("products.id"),
         nullable=False,
     )
-    product_name_snapshot: Mapped[str] = mapped_column(Text, nullable=False)
+    name: Mapped[str] = mapped_column(Text, nullable=False)
+    category_id: Mapped[int] = mapped_column(
+        ForeignKey("categories.id"),
+        nullable=False,
+    )
+    estimated_price: Mapped[Decimal] = mapped_column(
+        Numeric(10, 2),
+        nullable=False,
+    )
     quantity: Mapped[int] = mapped_column(nullable=False, default=1)
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
     is_checked: Mapped[bool] = mapped_column(
