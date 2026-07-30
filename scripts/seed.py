@@ -54,7 +54,6 @@ def seed_products(db, products, category_map):
             ProductTable(
                 name=name,
                 category_id=category.id,
-                image_url=product_data.get("image_url"),
             )
         )
 

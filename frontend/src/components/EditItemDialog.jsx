@@ -5,6 +5,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import TextField from "@mui/material/TextField";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
@@ -20,6 +24,8 @@ const inputStyles = {
     },
 };
 
+const wholeQuantityUnits = new Set(["each", "pack", "dozen"]);
+
 
 function EditItemDialog({onClose, item, onDeleteItem}) {
 
@@ -28,16 +34,28 @@ function EditItemDialog({onClose, item, onDeleteItem}) {
 
     const [productName, setProductName] = useState(item.product_name ?? "");
     const [category, setCategory] = useState(item.category);
-    const [quantity,  setQuantity] = useState(item.quantity);
-    const [estimatedPrice, setEstimatedPrice] = useState(item.estimated_price);
+    const [quantity, setQuantity] = useState(Number(item.quantity));
+    const [unit, setUnit] = useState(item.unit ?? "each");
+    const [estimatedPrice, setEstimatedPrice] = useState(
+        item.estimated_price ?? "",
+    );
     const [notes, setNotes] = useState(item.notes ?? "");
 
+    const quantityStep = wholeQuantityUnits.has(unit) ? 1 : 0.25;
+
     function decreaseQuantity() {
-        setQuantity((currentQuantity) => Math.max(1, currentQuantity - 1));
+        setQuantity((currentQuantity) => (
+            Math.max(
+                quantityStep,
+                Number((currentQuantity - quantityStep).toFixed(2)),
+            )
+        ));
     }
 
     function increaseQuantity() {
-        setQuantity((currentQuantity) => currentQuantity + 1);
+        setQuantity((currentQuantity) => (
+            Number((currentQuantity + quantityStep).toFixed(2))
+        ));
     }
 
     function handleSubmit(event) {
@@ -101,7 +119,7 @@ function EditItemDialog({onClose, item, onDeleteItem}) {
                 <IconButton
                     aria-label="Decrease quantity"
                     onClick={decreaseQuantity}
-                    disabled={quantity <= 1}
+                    disabled={quantity <= quantityStep}
                     sx={{
                         borderRadius: 0,
                         px: 1.5,
@@ -142,13 +160,41 @@ function EditItemDialog({onClose, item, onDeleteItem}) {
                     <AddIcon />
                 </IconButton>
             </Box>
+            <FormControl fullWidth margin="normal">
+                <InputLabel id="item-unit-label">Unit</InputLabel>
+                <Select
+                    labelId="item-unit-label"
+                    label="Unit"
+                    value={unit}
+                    onChange={(event) => setUnit(event.target.value)}
+                    sx={{ bgcolor: "white" }}
+                >
+                    <MenuItem value="each">Each</MenuItem>
+                    <MenuItem value="pack">Pack</MenuItem>
+                    <MenuItem value="lb">Pound (lb)</MenuItem>
+                    <MenuItem value="oz">Ounce (oz)</MenuItem>
+                    <MenuItem value="kg">Kilogram (kg)</MenuItem>
+                    <MenuItem value="g">Gram (g)</MenuItem>
+                    <MenuItem value="L">Liter (L)</MenuItem>
+                    <MenuItem value="mL">Milliliter (mL)</MenuItem>
+                    <MenuItem value="gallon">Gallon</MenuItem>
+                    <MenuItem value="dozen">Dozen</MenuItem>
+                </Select>
+            </FormControl>
             <TextField
-                label="Estimated Price"
+                label="Estimated Price (optional)"
+                type="number"
                 value={estimatedPrice}
                 onChange={(event) => setEstimatedPrice(event.target.value)}
                 fullWidth
                 margin="normal"
                 sx={inputStyles}
+                slotProps={{
+                    htmlInput: {
+                        min: 0,
+                        step: "0.01",
+                    },
+                }}
             />
             <TextField
                 label="Notes"

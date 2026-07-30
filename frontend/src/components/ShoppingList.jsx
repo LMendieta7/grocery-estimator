@@ -72,9 +72,9 @@ function ShoppingList({ items, onDeleteItem }) {
                                         fontStyle:"italic"
                                     }}
                                 >
-                                    {item.quantity} &times;
-                                    ${item.estimated_price}
-                    
+                                    Quantity: {Number(item.quantity)} {item.unit}
+                                    {item.estimated_price != null &&
+                                        ` • $${item.estimated_price}`}
                                     {item.notes &&` •  ${item.notes}`}
                                 </Typography>
                               

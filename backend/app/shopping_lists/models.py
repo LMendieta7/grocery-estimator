@@ -6,6 +6,7 @@ from sqlalchemy import (
     DateTime,
     ForeignKey,
     Numeric,
+    String,
     Text,
     UniqueConstraint,
 )
@@ -53,11 +54,21 @@ class ShoppingListItemTable(Base):
         ForeignKey("categories.id"),
         nullable=False,
     )
-    estimated_price: Mapped[Decimal] = mapped_column(
+    estimated_price: Mapped[Decimal | None] = mapped_column(
+        Numeric(10, 2),
+        nullable=True,
+    )
+    quantity: Mapped[Decimal] = mapped_column(
         Numeric(10, 2),
         nullable=False,
+        default=Decimal("1.00"),
     )
-    quantity: Mapped[int] = mapped_column(nullable=False, default=1)
+    unit: Mapped[str] = mapped_column(
+        String(20),
+        nullable=False,
+        default="each",
+    )
+    image_url: Mapped[str | None] = mapped_column(Text, nullable=True)
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
     is_checked: Mapped[bool] = mapped_column(
         Boolean,

@@ -1,5 +1,4 @@
 import Paper from "@mui/material/Paper";
-import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
@@ -14,23 +13,22 @@ function SummaryBar({ shoppingListDetail }){
                 bgcolor: "lightblue",
             }}
         >
-            <Stack>
-                <Box sx={{display:"flex",
-                        justifyContent: "space-between",
-        
-                    }}>
-                    <Typography>
+            <Box
+                sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                }}
+            >
+                <Typography fontWeight={600}>
                     {shoppingListDetail.checked_count ?? 0} /{" "}
                     {shoppingListDetail.total_count ?? 0} checked
-                    </Typography>
-
+                </Typography>
+                {shoppingListDetail.estimated_total != null && (
                     <Typography fontWeight={600}>
-                        $
-                        {shoppingListDetail.estimated_total ?? "0.00"}
+                        ${shoppingListDetail.estimated_total}
                     </Typography>
-                </Box>
-                
-            </Stack>
+                )}
+            </Box>
         </Paper>
     );
 

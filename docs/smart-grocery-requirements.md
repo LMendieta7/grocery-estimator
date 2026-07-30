@@ -7,7 +7,7 @@ The project should stay simple enough for continuous Agile development. Build us
 ## Agreed Direction
 
 - Build the real app around persisted product data instead of expanding fake in-memory inventory.
-- Start database-first because the product catalog drives search, shopping-list items, price snapshots, saved trips, and totals.
+- Start database-first because the product catalog drives search, shopping-list items, and saved trips.
 - Use PostgreSQL, not SQLite.
 - Keep the existing estimator code as a learning artifact until it is replaced by the real product/list flow.
 - Build the Product Catalog API first, then the Current Shopping List workflow.
@@ -117,14 +117,12 @@ Fields:
 - `barcode`
 - `sku`
 - `size`
-- `current_price`
-- `image_url`
 - `last_updated`
 
 Examples:
 
-- Great Value Whole Milk, 1 gallon, 4.29
-- Great Value Eggs, 12 count, 3.99
+- Great Value Whole Milk, 1 gallon
+- Great Value Eggs, 12 count
 
 ## Shopping List Item
 
@@ -138,23 +136,21 @@ Fields:
 - `name`
 - `quantity`
 - `size`
-- `unit_price`
 - `found`
 - `in_cart`
 - `added_by`
 
 Important:
 
-- `unit_price` is a snapshot of the product price at the moment it is added to the list.
-- Old shopping lists must keep their original prices if the Product price changes later.
+- Name and category are copied from the product when it is added.
+- List-item copies can later be edited without changing the catalog product.
 
 Example:
 
 ```text
-Product current price: 3.99
+Product name: Whole Milk
 Quantity: 2
-Shopping list item unit_price snapshot: 3.99
-Item total: 7.98
+Shopping list item name: Whole Milk
 ```
 
 ## Shopping List
@@ -170,10 +166,8 @@ Fields:
 - `updated_at`
 - `status`
 
-Summary values can be calculated from list items first:
+Summary values can be calculated from list items:
 
-- `estimated_total`
-- `remaining_estimated_cost`
 - `total_items`
 - `items_found`
 - `items_not_found`
@@ -199,7 +193,6 @@ Features:
 - Add product
 - Edit product
 - Delete product
-- Update price manually
 
 ## Current Shopping List
 
@@ -211,10 +204,10 @@ Core workflow:
 
 - Search products from the catalog
 - Show matching product suggestions immediately
-- Display product image, name, brand, store, package size, and current price
+- Display product name, category, and package size
+- Allow an optional image on an individual shopping-list item
 - Add a product to the current list
 - Ask for quantity, defaulting to 1
-- Store the current product price as the shopping-list item unit-price snapshot
 
 ## Quantity
 
@@ -224,7 +217,23 @@ Each shopping-list row supports quick quantity changes:
 [-] 2 [+]
 ```
 
-Changing quantity updates totals immediately.
+Changing quantity updates the list immediately.
+
+Shopping-list items use a fixed unit selector. Count-based units use whole
+steps, while weight and volume units support decimal quantities. Unit
+conversion is outside the MVP.
+
+## Optional Pricing
+
+- Shopping-list item prices are optional.
+- Shared catalog products do not store personal prices.
+- Unknown prices remain empty rather than defaulting to zero.
+- The summary displays an estimated total only when at least one list item
+  has a price.
+- Per-user remembered prices can be added later with user product preferences.
+- Product names do not belong in preferences. A changed reusable name creates
+  or reuses a user-owned product; an unchanged name keeps the shared product.
+- Store-specific prices and price history are future features.
 
 ## Paste List
 
@@ -250,8 +259,6 @@ Columns:
 - Product
 - Quantity
 - Size
-- Unit Price
-- Total
 - Actions
 
 Use only one checkbox.
@@ -260,21 +267,18 @@ When checked:
 
 - Strike through the product
 - Update progress
-- Update remaining cost
 - If all items are checked, mark the list completed
 
 ## Summary Card
 
 Show:
 
-- Estimated Total
 - Items
 - Found
 - Missing
 - Collected
 - Remaining
 - Progress Bar
-- Estimated Remaining Cost
 
 ## Recent Lists
 
@@ -284,7 +288,6 @@ Display:
 
 - Store
 - Date
-- Estimated total
 - Status
 - Items
 
@@ -305,7 +308,6 @@ Left sidebar:
 - Current List
 - Saved Lists
 - Product Catalog
-- Price History
 - Stores
 - Scan Barcode
 - Reports
@@ -333,6 +335,7 @@ Do not implement in Phase 1:
 - WebSockets
 - Walmart scraping
 - Push notifications
+- Store-specific price tracking and price history
 
 ## Future Ready
 
@@ -365,10 +368,10 @@ Design so these can be added later:
 3. Shopping List backend
    - ShoppingList and ShoppingListItem tables
    - Create/open current list
-   - Add product to list with price snapshot
+   - Add product to list with copied name and category
    - Increase/decrease quantity
    - Check item as collected
-   - Calculate totals and progress
+   - Calculate list progress
 
 4. Minimal React UI
    - Sidebar shell
@@ -386,7 +389,6 @@ The first useful backend target is Product Catalog API:
 - Search products
 - List products
 - Update product
-- Update price
 - Delete product
 
 After that, build the Current Shopping List workflow on top of real product data.

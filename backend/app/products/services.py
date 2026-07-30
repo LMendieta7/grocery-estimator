@@ -1,5 +1,3 @@
-from decimal import Decimal
-
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
@@ -50,8 +48,6 @@ class ProductService:
         product = ProductTable(
             name=request.name,
             category_id=category.id,
-            estimated_price=request.estimated_price or Decimal("0.00"),
-            image_url=request.image_url,
         )
         self.db.add(product)
         self.db.flush()
@@ -92,6 +88,4 @@ class ProductService:
             id=product.id,
             name=product.name,
             category=category.name,
-            estimated_price=product.estimated_price,
-            image_url=product.image_url,
         )

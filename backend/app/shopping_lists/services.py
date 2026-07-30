@@ -51,15 +51,21 @@ class ShoppingListService:
         )
         rows = self.db.execute(statement).all()
         items = []
-        estimated_total = Decimal("0.00")
+        estimated_total: Decimal | None = None
         checked_count = 0
 
         for list_item, category in rows:
             if list_item.is_checked:
                 checked_count += 1
-            estimated_total += (
-                list_item.quantity * list_item.estimated_price
-            )
+            if list_item.estimated_price is not None:
+                item_total = (
+                    list_item.quantity * list_item.estimated_price
+                )
+                estimated_total = (
+                    item_total
+                    if estimated_total is None
+                    else estimated_total + item_total
+                )
 
             items.append(
                 ShoppingListItemResponse(
@@ -69,7 +75,9 @@ class ShoppingListService:
                     product_name=list_item.name,
                     category=category.name,
                     quantity=list_item.quantity,
+                    unit=list_item.unit,
                     estimated_price=list_item.estimated_price,
+                    image_url=list_item.image_url,
                     notes=list_item.notes,
                     is_checked=list_item.is_checked,
                 )
@@ -98,8 +106,10 @@ class ShoppingListService:
             product_id=product.id,
             name=product.name,
             category_id=product.category_id,
-            estimated_price=product.estimated_price,
+            estimated_price=None,
             quantity=request.quantity,
+            unit=request.unit.value,
+            image_url=request.image_url,
             notes=request.notes,
             is_checked=False,
         )
