@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from backend.app.core.database import SessionLocal
 from backend.app.products.services import ProductService
 from backend.app.shopping_lists.services import ShoppingListService
+from backend.app.categories.services import CategoryService
 
 
 def get_db() -> Generator[Session, None, None]:
@@ -26,3 +27,6 @@ def get_shopping_list_service(
     db: Session = Depends(get_db),
 ) -> ShoppingListService:
     return ShoppingListService(db)
+
+def get_categories_service(db: Session = Depends(get_db)):
+    return CategoryService(db)

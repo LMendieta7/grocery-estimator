@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { searchProducts } from "../services/productApi";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
 
 function ProductSearch({ onAddProductToList }) {
     const [search, setSearch] = useState("");
@@ -67,8 +69,13 @@ function ProductSearch({ onAddProductToList }) {
     }
     
     return (
-        <div>
+        <FormControl fullWidth>
+            <FormLabel htmlFor="product-search" sx={{ mb: 0.75 }}>
+                Search Products
+            </FormLabel>
             <Autocomplete
+                id="product-search"
+                size="small"
                 value={null}
                 inputValue={search}
                 options={suggestions}
@@ -80,13 +87,13 @@ function ProductSearch({ onAddProductToList }) {
                 renderInput={(params) => (
                     <TextField
                         {...params}
-                        label="Search products"
+                        placeholder="Start typing a product"
                         error={Boolean(error)}
                         helperText={error}
                     />
                 )}
             />
-        </div>
+        </FormControl>
     );
 }
 

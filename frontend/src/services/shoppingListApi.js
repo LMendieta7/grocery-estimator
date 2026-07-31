@@ -24,6 +24,7 @@ export async function getShoppingListDetail(shoppingListId) {
     throw new Error("Could not get shopping list details");
   }
 
+
   return response.json();
 }
 
@@ -59,4 +60,19 @@ export async function deleteShoppingListItem(shoppingListId, itemId) {
   }
 
   return response.json();
+}
+
+export async function updateShoppingListItem(shoppingListId, itemId, request) {
+  const response = await fetch(`${API_BASE_URL}/shopping-lists/${shoppingListId}/items/${itemId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(request),
+    });
+
+    if (!response.ok) {
+    throw new Error("Could not update list item");
+  }
+    return response.json();
 }

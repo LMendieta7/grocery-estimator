@@ -6,7 +6,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
+import FormLabel from "@mui/material/FormLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Typography from "@mui/material/Typography";
@@ -17,23 +17,16 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 
-
-const inputStyles = {
-    "& .MuiOutlinedInput-root": {
-        bgcolor: "white",
-    },
-};
-
 const wholeQuantityUnits = new Set(["each", "pack", "dozen"]);
 
 
-function EditItemDialog({onClose, item, onDeleteItem}) {
+function EditItemDialog({onClose, item, onDeleteItem, onUpdateListItem, categories}) {
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
     const [productName, setProductName] = useState(item.product_name ?? "");
-    const [category, setCategory] = useState(item.category);
+    const [categoryId, setCategoryId] = useState(Number(item.category_id));
     const [quantity, setQuantity] = useState(Number(item.quantity));
     const [unit, setUnit] = useState(item.unit ?? "each");
     const [estimatedPrice, setEstimatedPrice] = useState(
@@ -47,20 +40,54 @@ function EditItemDialog({onClose, item, onDeleteItem}) {
         setQuantity((currentQuantity) => (
             Math.max(
                 quantityStep,
-                Number((currentQuantity - quantityStep).toFixed(2)),
+                (currentQuantity - quantityStep),
             )
         ));
     }
 
     function increaseQuantity() {
         setQuantity((currentQuantity) => (
-            Number((currentQuantity + quantityStep).toFixed(2))
+            (currentQuantity + quantityStep)
         ));
     }
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
+        const updates = {};
+
+         if (productName !== item.product_name) {
+            updates.name = productName;
+        }
+
+        if (unit !== item.unit) {
+            updates.unit = unit;
+        }
+        if (categoryId !== item.category_id){
+            updates.category_id = categoryId
+        }
+
+        if (quantity !== Number(item.quantity)) {
+            updates.quantity = quantity;
+        }
+
+        if (estimatedPrice !== (item.estimated_price ?? "")) {
+            updates.estimated_price =
+            estimatedPrice === "" ? null : Number(estimatedPrice);
+        }
+
+        if (notes !== (item.notes ?? "")) {
+            updates.notes = notes;
+        }
+
+        if (Object.keys(updates).length === 0) {
+            onClose();
+            return;
+        }
+
+        await onUpdateListItem(item.id, updates);
+        onClose();
     }
+
     async function handleDelete() {
         await onDeleteItem(item.id);
         onClose();
@@ -86,88 +113,99 @@ function EditItemDialog({onClose, item, onDeleteItem}) {
             <Box component="form" onSubmit={handleSubmit}>
             <DialogContent>
             
-            <TextField
-                label="Item Name"
-                value={productName}
-                onChange={(event) => setProductName(event.target.value)}
-                fullWidth
-                margin="normal"
-                sx={inputStyles}
-            />
-            <TextField
-                label="Category"
-                value={category}
-                onChange={(event) => setCategory(event.target.value)}
-                fullWidth
-                margin="normal"
-                sx={inputStyles}
-            />
-            <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-                Quantity
-            </Typography>
-            <Box
-                sx={{
-                    display: "inline-flex",
-                    border: 1,
-                    borderColor: "divider",
-                    borderRadius: 1,
-                    overflow: "hidden",
-                    my: 1,
-                }}
-                alignItems="center"
-            >
-                <IconButton
-                    aria-label="Decrease quantity"
-                    onClick={decreaseQuantity}
-                    disabled={quantity <= quantityStep}
-                    sx={{
-                        borderRadius: 0,
-                        px: 1.5,
-                        color: "primary.main",
-                        bgcolor: "lightblue",
-                        
-                    }}
-                >
-                    <RemoveIcon />
-                </IconButton>
-
-                <Typography
-                    aria-label={`Quantity: ${quantity}`}
-                    sx={{
-                        minWidth: 32,
-                        textAlign: "center",
-                        fontWeight: 600,
-                        px: 2,
-                        py: 1,
-                        borderLeft: 1,
-                        borderRight: 1,
-                        borderColor: "divider",
-                    }}
-                >
-                    {quantity}
-                </Typography>
-
-                <IconButton
-                    aria-label="Increase quantity"
-                    onClick={increaseQuantity}
-                    sx={{
-                        borderRadius: 0,
-                        px: 1.5,
-                        color: "primary.main",
-                        bgcolor: "lightblue",
-                    }}
-                >
-                    <AddIcon />
-                </IconButton>
-            </Box>
             <FormControl fullWidth margin="normal">
-                <InputLabel id="item-unit-label">Unit</InputLabel>
+                <FormLabel htmlFor="item-name" sx={{ mb: 0.75 }}>
+                    Item Name
+                </FormLabel>
+                <TextField
+                    id="item-name"
+                    value={productName}
+                    onChange={(event) => setProductName(event.target.value)}
+                    fullWidth
+                />
+            </FormControl>
+            <FormControl fullWidth size="small" margin="normal">
+                <FormLabel id="category-label" sx={{ mb: 0.75 }}>
+                    Category
+                </FormLabel>
+                <Select
+                    labelId="category-label"
+                    value={categoryId}
+                    onChange={(event) => setCategoryId(event.target.value)}
+                >
+                    {categories.map((category) => (
+                        <MenuItem key={category.id} value={category.id}>
+                            {category.name}
+                        </MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
+            <FormControl component="fieldset" margin="normal">
+                <FormLabel component="legend" sx={{ mb: 0.75 }}>
+                    Quantity
+                </FormLabel>
+                <Box
+                    sx={{
+                        display: "inline-flex",
+                        border: 1,
+                        borderColor: "divider",
+                        borderRadius: 1,
+                        overflow: "hidden",
+                    }}
+                    alignItems="center"
+                >
+                    <IconButton
+                        aria-label="Decrease quantity"
+                        onClick={decreaseQuantity}
+                        disabled={quantity <= quantityStep}
+                        sx={{
+                            borderRadius: 0,
+                            px: 1.5,
+                            color: "primary.main",
+                            bgcolor: "lightblue",
+                        }}
+                    >
+                        <RemoveIcon />
+                    </IconButton>
+
+                    <Typography
+                        aria-label={`Quantity: ${quantity}`}
+                        sx={{
+                            minWidth: 32,
+                            textAlign: "center",
+                            fontWeight: 600,
+                            px: 2,
+                            py: 1,
+                            borderLeft: 1,
+                            borderRight: 1,
+                            borderColor: "divider",
+                        }}
+                    >
+                        {quantity}
+                    </Typography>
+
+                    <IconButton
+                        aria-label="Increase quantity"
+                        onClick={increaseQuantity}
+                        sx={{
+                            borderRadius: 0,
+                            px: 1.5,
+                            color: "primary.main",
+                            bgcolor: "lightblue",
+                        }}
+                    >
+                        <AddIcon />
+                    </IconButton>
+                </Box>
+            </FormControl>
+            <FormControl fullWidth margin="normal">
+                <FormLabel id="item-unit-label" sx={{ mb: 0.75 }}>
+                    Unit
+                </FormLabel>
                 <Select
                     labelId="item-unit-label"
-                    label="Unit"
                     value={unit}
                     onChange={(event) => setUnit(event.target.value)}
-                    sx={{ bgcolor: "white" }}
                 >
                     <MenuItem value="each">Each</MenuItem>
                     <MenuItem value="pack">Pack</MenuItem>
@@ -181,32 +219,37 @@ function EditItemDialog({onClose, item, onDeleteItem}) {
                     <MenuItem value="dozen">Dozen</MenuItem>
                 </Select>
             </FormControl>
-            <TextField
-                label="Estimated Price (optional)"
-                type="number"
-                value={estimatedPrice}
-                onChange={(event) => setEstimatedPrice(event.target.value)}
-                fullWidth
-                margin="normal"
-                sx={inputStyles}
-                slotProps={{
-                    htmlInput: {
-                        min: 0,
-                        step: "0.01",
-                    },
-                }}
-            />
-            <TextField
-                label="Notes"
-                value={notes}
-                onChange={(event) => setNotes(event.target.value)}
-                fullWidth
-                multiline
-                minRows={4}
-                margin="normal"
-                sx={inputStyles}
-                
-            />
+            <FormControl fullWidth margin="normal">
+                <FormLabel htmlFor="estimated-price" sx={{ mb: 0.75 }}>
+                    Estimated Price (optional)
+                </FormLabel>
+                <TextField
+                    id="estimated-price"
+                    type="number"
+                    value={estimatedPrice}
+                    onChange={(event) => setEstimatedPrice(event.target.value)}
+                    fullWidth
+                    slotProps={{
+                        htmlInput: {
+                            min: 0,
+                            step: "0.01",
+                        },
+                    }}
+                />
+            </FormControl>
+            <FormControl fullWidth margin="normal">
+                <FormLabel htmlFor="item-notes" sx={{ mb: 0.75 }}>
+                    Notes
+                </FormLabel>
+                <TextField
+                    id="item-notes"
+                    value={notes}
+                    onChange={(event) => setNotes(event.target.value)}
+                    fullWidth
+                    multiline
+                    minRows={4}
+                />
+            </FormControl>
             </DialogContent>
 
             <DialogActions sx={{ px: 3, pb: 2, bgcolor: "inherit" }}>
@@ -225,7 +268,7 @@ function EditItemDialog({onClose, item, onDeleteItem}) {
                 Cancel
             </Button>
 
-            <Button type="submit" variant="contained" size="medium">
+            <Button type="submit"  variant="contained" size="medium">
                 Save
             </Button>
             </DialogActions>

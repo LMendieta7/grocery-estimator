@@ -9,7 +9,7 @@ import EditItemDialog from "./EditItemDialog";
 
 import { useState } from "react";
 
-function ShoppingList({ items, onDeleteItem }) {
+function ShoppingList({ items, onDeleteItem, onUpdateListItem, categories }) {
 
     const [selectedItem, setSelectedItem] = useState(null);
    
@@ -33,7 +33,7 @@ function ShoppingList({ items, onDeleteItem }) {
                         key={item.id}
                         divider
                         alignItems="flex-start"
-                        sx={{ pl: 0 }}
+                        sx={{ pl: 0, py: 0.75 }}
                     >
                         <Box
                             sx={{
@@ -41,7 +41,7 @@ function ShoppingList({ items, onDeleteItem }) {
                                 alignItems: "flex-start",
                                 width: "100%",
                                 minWidth: 0,
-                                gap: 2,
+                                gap: 1.25,
                             }}
                         >
                             <Checkbox
@@ -97,6 +97,8 @@ function ShoppingList({ items, onDeleteItem }) {
                 onClose={handleClose}
                 item={selectedItem}
                 onDeleteItem={onDeleteItem}
+                onUpdateListItem={onUpdateListItem}
+                categories={categories}
             />
             )}
         </Box>

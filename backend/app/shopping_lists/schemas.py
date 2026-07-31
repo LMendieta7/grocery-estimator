@@ -31,6 +31,7 @@ class ShoppingListItemResponse(BaseModel):
     shopping_list_id: int
     product_id: int
     product_name: str
+    category_id: int
     category: str
     quantity: Decimal
     unit: ItemUnit

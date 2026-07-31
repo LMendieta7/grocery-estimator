@@ -73,6 +73,7 @@ class ShoppingListService:
                     shopping_list_id=list_item.shopping_list_id,
                     product_id=list_item.product_id,
                     product_name=list_item.name,
+                    category_id=category.id,
                     category=category.name,
                     quantity=list_item.quantity,
                     unit=list_item.unit,

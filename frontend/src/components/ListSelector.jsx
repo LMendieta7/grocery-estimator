@@ -1,15 +1,16 @@
-import { getAllShoppingLists} from "../services/shoppingListApi";
+import { getAllShoppingLists } from "../services/shoppingListApi";
 import { useEffect, useState } from "react";
 
 import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
+import FormLabel from "@mui/material/FormLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Box from "@mui/material/Box";
 
 
 
-function ListSelector({ selectedListId, onSelectList }){
+
+function ListSelector({ selectedListId, onSelectList, totalItemsCount, checkedCount}){
     const [shoppingLists, setShoppingLists] = useState([]);
 
     function handleListChange(event) {
@@ -32,19 +33,18 @@ function ListSelector({ selectedListId, onSelectList }){
     
     return (
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <FormControl size="small" sx={{ minWidth: 200 }}>
-                <InputLabel id="shopping-list-label">
+            <FormControl size="small" sx={{ minWidth: 250 }}>
+                <FormLabel id="shopping-list-label" sx={{ mb: 0.75 }}>
                     Shopping List
-                </InputLabel>
+                </FormLabel>
                 <Select
                     labelId="shopping-list-label"
-                    label="Shopping list"
                     value={selectedListId}
                     onChange={handleListChange}
                 >
                 {shoppingLists.map((list) => (
                     <MenuItem key={list.id} value={list.id}>
-                        {list.name}
+                        {list.name}  {`(${checkedCount}/${totalItemsCount})`}
                     </MenuItem>
                 ))}
                 </Select>

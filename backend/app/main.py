@@ -5,6 +5,10 @@ from backend.app.products.router import router as product_router
 from backend.app.shopping_lists.router import (
     router as shopping_list_router,
 )
+from backend.app.categories.router import (
+    router as categories_router,
+)
+
 
 
 def create_app() -> FastAPI:
@@ -27,6 +31,11 @@ def create_app() -> FastAPI:
         prefix="/api",
         tags=["shopping lists"],
     )
+    app.include_router(
+            categories_router,
+            prefix="/api",
+            tags=["categories"],
+        )
 
     return app
 

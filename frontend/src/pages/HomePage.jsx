@@ -2,7 +2,6 @@ import { useCallback, useState, useEffect } from "react";
 import ProductSearch from "../components/ProductSearch";
 import ShoppingList from "../components/ShoppingList";
 import ListSelector from "../components/ListSelector";
-import SummaryBar from "../components/SummaryBar";
 import Header from "../components/Header";
 import Box from "@mui/material/Box";
 
@@ -10,13 +9,17 @@ import {
   addProductToShoppingList,
   deleteShoppingListItem,
   getShoppingListDetail,
+  updateShoppingListItem
 } from "../services/shoppingListApi";
+
+import { getAllCategories } from "../services/categoriesApi";
 
 
 
 function HomePage() {
   const [selectedListId, setSelectedListId] = useState("");
   const [shoppingListDetail, setShoppingListDetail] = useState(null);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     async function loadShoppingListDetails() {
@@ -27,14 +30,28 @@ function HomePage() {
       try {
         const listDetails = await getShoppingListDetail(selectedListId);
         setShoppingListDetail(listDetails);
-  
+
       } catch (error) {
         console.error("Failed to load shopping list details:", error);
       }
     }
 
     loadShoppingListDetails();
+
   }, [selectedListId]);
+
+  useEffect(() => {
+    async function loadAllCategories() {
+      try {
+        const categoryList = await getAllCategories();
+        setCategories(categoryList);
+      } catch (error) {
+        console.error("Failed to load categories:", error);
+      }
+    }
+
+    loadAllCategories();
+  }, []);
 
   async function addProductToList(product) {
     if (!selectedListId) {
@@ -53,6 +70,7 @@ function HomePage() {
 
     }
 
+
   const handleListSelect = useCallback((listId) => {
     setSelectedListId(listId);
     
@@ -66,6 +84,14 @@ function HomePage() {
     setShoppingListDetail(updateDetail);
   }
 
+  async function handleUpdateListItem(itemId, request){
+    if (!selectedListId) {
+        return;
+    }
+    const updateItemList = await updateShoppingListItem(selectedListId, itemId, request)
+    setShoppingListDetail(updateItemList);
+  }
+
   return (
     <>
       <Header />
@@ -73,23 +99,26 @@ function HomePage() {
         component="main"
         sx={{
           display: "grid",
-          gap: 4,
-          p: 2,
+          gap: { xs: 2, sm: 3 },
+          p: { xs: 1, sm: 2 },
         }}
       > 
         <ListSelector 
           onSelectList={handleListSelect}
           selectedListId={selectedListId}
+          totalItemsCount={shoppingListDetail ? shoppingListDetail.total_count : ""}
+          checkedCount = {shoppingListDetail ? shoppingListDetail.checked_count : ""}
 
         />
         <ProductSearch onAddProductToList={addProductToList} />
         
         {shoppingListDetail && (
         <>
-          <SummaryBar shoppingListDetail={shoppingListDetail} />
           <ShoppingList
             items={shoppingListDetail.items}
             onDeleteItem={deleteItemFromList}
+            onUpdateListItem={handleUpdateListItem}
+            categories={categories}
           />
         </>
       )}
