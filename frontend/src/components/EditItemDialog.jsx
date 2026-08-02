@@ -7,9 +7,9 @@ import DialogActions from "@mui/material/DialogActions";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import InputBase from "@mui/material/InputBase";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import AddIcon from "@mui/icons-material/Add";
@@ -38,17 +38,40 @@ function EditItemDialog({onClose, item, onDeleteItem, onUpdateListItem, categori
 
     function decreaseQuantity() {
         setQuantity((currentQuantity) => (
-            Math.max(
-                quantityStep,
-                (currentQuantity - quantityStep),
+            Number(
+                Math.max(
+                    quantityStep,
+                    Number(currentQuantity) - quantityStep,
+                ).toFixed(2),
             )
         ));
     }
 
     function increaseQuantity() {
         setQuantity((currentQuantity) => (
-            (currentQuantity + quantityStep)
+            Number(
+                (Number(currentQuantity || 0) + quantityStep).toFixed(2),
+            )
         ));
+    }
+
+    function handleQuantityChange(event) {
+        const nextQuantity = event.target.value;
+
+        setQuantity(
+            nextQuantity === "" ? "" : Number(nextQuantity),
+        );
+    }
+
+    function handleUnitChange(event) {
+        const nextUnit = event.target.value;
+        setUnit(nextUnit);
+
+        if (wholeQuantityUnits.has(nextUnit)) {
+            setQuantity((currentQuantity) => (
+                Math.max(1, Math.round(currentQuantity))
+            ));
+        }
     }
 
     async function handleSubmit(event) {
@@ -66,8 +89,8 @@ function EditItemDialog({onClose, item, onDeleteItem, onUpdateListItem, categori
             updates.category_id = categoryId
         }
 
-        if (quantity !== Number(item.quantity)) {
-            updates.quantity = quantity;
+        if (Number(quantity) !== Number(item.quantity)) {
+            updates.quantity = Number(quantity);
         }
 
         if (estimatedPrice !== (item.estimated_price ?? "")) {
@@ -157,7 +180,10 @@ function EditItemDialog({onClose, item, onDeleteItem, onUpdateListItem, categori
                     <IconButton
                         aria-label="Decrease quantity"
                         onClick={decreaseQuantity}
-                        disabled={quantity <= quantityStep}
+                        disabled={
+                            quantity === ""
+                            || Number(quantity) <= quantityStep
+                        }
                         sx={{
                             borderRadius: 0,
                             px: 1.5,
@@ -168,21 +194,36 @@ function EditItemDialog({onClose, item, onDeleteItem, onUpdateListItem, categori
                         <RemoveIcon />
                     </IconButton>
 
-                    <Typography
-                        aria-label={`Quantity: ${quantity}`}
+                    <InputBase
+                        type="number"
+                        value={quantity}
+                        onChange={handleQuantityChange}
                         sx={{
-                            minWidth: 32,
-                            textAlign: "center",
+                            width: 70,
                             fontWeight: 600,
-                            px: 2,
-                            py: 1,
+                            bgcolor: "white",
                             borderLeft: 1,
                             borderRight: 1,
                             borderColor: "divider",
+                            "& input": {
+                                textAlign: "center",
+                                py: 1,
+                                MozAppearance: "textfield",
+                            },
+                            "& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button": {
+                                WebkitAppearance: "none",
+                                margin: 0,
+                            },
                         }}
-                    >
-                        {quantity}
-                    </Typography>
+                        slotProps={{
+                            input: {
+                                "aria-label": "Quantity",
+                                min: quantityStep,
+                                step: quantityStep,
+                                required: true,
+                            },
+                        }}
+                    />
 
                     <IconButton
                         aria-label="Increase quantity"
@@ -205,7 +246,7 @@ function EditItemDialog({onClose, item, onDeleteItem, onUpdateListItem, categori
                 <Select
                     labelId="item-unit-label"
                     value={unit}
-                    onChange={(event) => setUnit(event.target.value)}
+                    onChange={handleUnitChange}
                 >
                     <MenuItem value="each">Each</MenuItem>
                     <MenuItem value="pack">Pack</MenuItem>
