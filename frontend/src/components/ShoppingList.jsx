@@ -18,6 +18,10 @@ function ShoppingList({ items, onDeleteItem, onUpdateListItem, categories }) {
         setSelectedItem(null);
     }
     
+    async function handleCheckbox(itemId, checked){
+        
+        await onUpdateListItem(itemId, {is_checked: checked});
+    }
 
     return (
         <Box
@@ -46,11 +50,10 @@ function ShoppingList({ items, onDeleteItem, onUpdateListItem, categories }) {
                         >
                             <Checkbox
                                 checked={item.is_checked}
-                                
+                                onChange={(event) => handleCheckbox(item.id, event.target.checked)}
                                 size="small"
                                 sx={{ pl: 0,
                                     mt: 0.25,
-                                    // '& .MuiSvgIcon-root': { fontSize: 22 } 
                                 }}
                             />
 

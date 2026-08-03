@@ -71,3 +71,7 @@ class ShoppingListItemMutationResponse(BaseModel):
     list_id: int
     list_item_id: int
     item_name: str
+
+class ShoppingListCreateRequest(BaseModel):
+    name: str | None = Field(min_length=1)
+

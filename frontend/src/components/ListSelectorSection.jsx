@@ -6,11 +6,11 @@ import FormLabel from "@mui/material/FormLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 
 
 
-
-function ListSelector({ selectedListId, onSelectList, totalItemsCount, checkedCount}){
+function ListSelectorSection({ selectedListId, onSelectList, totalItemsCount, checkedCount}){
     const [shoppingLists, setShoppingLists] = useState([]);
 
     function handleListChange(event) {
@@ -32,7 +32,7 @@ function ListSelector({ selectedListId, onSelectList, totalItemsCount, checkedCo
     }, [onSelectList]);
     
     return (
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+        <Box sx={{ display: "flex", alignItems: "flex-end", gap: 10 }}>
             <FormControl size="small" sx={{ minWidth: 250 }}>
                 <FormLabel id="shopping-list-label" sx={{ mb: 0.75 }}>
                     Shopping List
@@ -48,9 +48,15 @@ function ListSelector({ selectedListId, onSelectList, totalItemsCount, checkedCo
                     </MenuItem>
                 ))}
                 </Select>
+                
             </FormControl>
+
+            <Button variant="contained" sx={{alignItems: "center"}}>
+                add
+            </Button>
+
         </Box>
     );
 }
 
-export default ListSelector;
+export default ListSelectorSection;

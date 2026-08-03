@@ -6,6 +6,7 @@ from backend.app.shopping_lists.schemas import (
     ShoppingListDetailResponse,
     ShoppingListItemCreateRequest,
     ShoppingListItemUpdateRequest,
+    ShoppingListCreateRequest
 )
 from backend.app.shopping_lists.services import ShoppingListService
 
@@ -85,3 +86,10 @@ def update_shopping_list_item(
         raise HTTPException(status_code=404, detail="Item not found")
 
     return list_detail
+
+@router.post("/shopping-lists" , response_model=GetAllListResponse)
+def create_shopping_list(
+    request: ShoppingListCreateRequest,
+    service: ShoppingListService = Depends(get_shopping_list_service),
+):
+    return service.create_list(request)

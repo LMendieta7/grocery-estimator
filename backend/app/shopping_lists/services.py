@@ -13,6 +13,7 @@ from backend.app.shopping_lists.schemas import (
     GetAllListResponse,
     ShoppingListDetailResponse,
     ShoppingListItemResponse,
+    ShoppingListCreateRequest,
 )
 
 
@@ -142,3 +143,16 @@ class ShoppingListService:
         self.db.commit()
 
         return self.get_list_detail(shopping_list_id)
+
+
+    def create_list(self, request):
+    
+        shopping_list = ShoppingListTable(
+            name=request.name.strip()
+        )
+
+        self.db.add(shopping_list)
+        self.db.commit()
+        self.db.refresh(shopping_list)
+
+        return shopping_list

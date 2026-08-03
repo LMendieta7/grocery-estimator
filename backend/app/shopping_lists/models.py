@@ -19,7 +19,11 @@ class ShoppingListTable(Base):
     __tablename__ = "shopping_lists"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    name: Mapped[str] = mapped_column(Text, nullable=False)
+    name: Mapped[str] = mapped_column(
+        Text,
+        nullable=False,
+        unique=True,
+    )
 
     # Tracks when the shopping list was created.
     created_at: Mapped[datetime] = mapped_column(

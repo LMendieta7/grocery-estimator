@@ -76,3 +76,21 @@ export async function updateShoppingListItem(shoppingListId, itemId, request) {
   }
     return response.json();
 }
+
+export async function addShoppingList(request){
+    const repsonse = await fetch(`${API_BASE_URL}/shopping-lists/`,
+      {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(request),
+    }
+  );
+    
+    if (!response.ok) {
+      throw new Error("Could not add shopping list");
+    }
+
+    return response.json();
+}

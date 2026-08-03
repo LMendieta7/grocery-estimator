@@ -1,7 +1,7 @@
 import { useCallback, useState, useEffect } from "react";
 import ProductSearch from "../components/ProductSearch";
 import ShoppingList from "../components/ShoppingList";
-import ListSelector from "../components/ListSelector";
+import ListSelectorSection from "../components/ListSelectorSection";
 import Header from "../components/Header";
 import Box from "@mui/material/Box";
 
@@ -103,7 +103,7 @@ function HomePage() {
           p: { xs: 1, sm: 2 },
         }}
       > 
-        <ListSelector 
+        <ListSelectorSection 
           onSelectList={handleListSelect}
           selectedListId={selectedListId}
           totalItemsCount={shoppingListDetail ? shoppingListDetail.total_count : ""}
