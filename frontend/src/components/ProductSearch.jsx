@@ -3,7 +3,7 @@ import { searchProducts } from "../services/productApi";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
+
 
 function ProductSearch({ onAddProductToList }) {
     const [search, setSearch] = useState("");
@@ -70,12 +70,28 @@ function ProductSearch({ onAddProductToList }) {
     
     return (
         <FormControl fullWidth>
-            <FormLabel htmlFor="product-search" sx={{ mb: 0.75 }}>
-                Search Products
-            </FormLabel>
+            
             <Autocomplete
                 id="product-search"
                 size="small"
+                sx={{
+                    width: {
+                        xs: "100%",
+                        sm: "40%",
+                    },
+                    "& .MuiOutlinedInput-root": {
+                        borderRadius: "8px",
+                        "& .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "#c9d0cb",
+                        },
+                        "&:hover .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "darkgreen",
+                        },
+                        "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "darkgreen",
+                        },
+                    },
+                }}
                 value={null}
                 inputValue={search}
                 options={suggestions}
@@ -87,7 +103,7 @@ function ProductSearch({ onAddProductToList }) {
                 renderInput={(params) => (
                     <TextField
                         {...params}
-                        placeholder="Start typing a product"
+                        placeholder="Search or add products..."
                         error={Boolean(error)}
                         helperText={error}
                     />

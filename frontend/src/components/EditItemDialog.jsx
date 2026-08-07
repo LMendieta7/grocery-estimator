@@ -132,11 +132,28 @@ function EditItemDialog({onClose, item, onDeleteItem, onUpdateListItem, categori
                 },
             }}
         >
-            <DialogTitle align="center">Edit {item.product_name} </DialogTitle>
-            <Box component="form" onSubmit={handleSubmit}>
+            <DialogTitle sx={{mb:0, pb:0}} align="center">Edit {item.product_name} </DialogTitle>
+            <Box
+                component="form"
+                onSubmit={handleSubmit}
+                sx={{
+                    "& .MuiOutlinedInput-root": {
+                        borderRadius: "8px",
+                        "& .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "#c9d0cb",
+                        },
+                        "&:hover .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "darkgreen",
+                        },
+                        "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "darkgreen",
+                        },
+                    },
+                }}
+            >
             <DialogContent>
             
-            <FormControl fullWidth margin="normal">
+            <FormControl fullWidth size="small" margin="dense">
                 <FormLabel htmlFor="item-name" sx={{ mb: 0.75 }}>
                     Item Name
                 </FormLabel>
@@ -144,10 +161,11 @@ function EditItemDialog({onClose, item, onDeleteItem, onUpdateListItem, categori
                     id="item-name"
                     value={productName}
                     onChange={(event) => setProductName(event.target.value)}
+                    size="small"
                     fullWidth
                 />
             </FormControl>
-            <FormControl fullWidth size="small" margin="normal">
+            <FormControl fullWidth size="small" margin="dense">
                 <FormLabel id="category-label" sx={{ mb: 0.75 }}>
                     Category
                 </FormLabel>
@@ -163,7 +181,7 @@ function EditItemDialog({onClose, item, onDeleteItem, onUpdateListItem, categori
                     ))}
                 </Select>
             </FormControl>
-            <FormControl component="fieldset" margin="normal">
+            <FormControl component="fieldset" size="small" margin="dense">
                 <FormLabel component="legend" sx={{ mb: 0.75 }}>
                     Quantity
                 </FormLabel>
@@ -171,9 +189,14 @@ function EditItemDialog({onClose, item, onDeleteItem, onUpdateListItem, categori
                     sx={{
                         display: "inline-flex",
                         border: 1,
-                        borderColor: "divider",
-                        borderRadius: 1,
+                        borderColor: "#c9d0cb",
+                        borderRadius: "8px",
                         overflow: "hidden",
+                        height: 40,
+                        transition: "border-color 160ms ease",
+                        "&:hover": {
+                            borderColor: "darkgreen",
+                        },
                     }}
                     alignItems="center"
                 >
@@ -187,8 +210,11 @@ function EditItemDialog({onClose, item, onDeleteItem, onUpdateListItem, categori
                         sx={{
                             borderRadius: 0,
                             px: 1.5,
-                            color: "primary.main",
-                            bgcolor: "lightblue",
+                            color: "#0B5D1E",
+                            bgcolor: "rgba(11, 93, 30, 0.16)",
+                            "&:hover": {
+                                bgcolor: "rgba(11, 93, 30, 0.24)",
+                            },
                         }}
                     >
                         <RemoveIcon />
@@ -231,15 +257,18 @@ function EditItemDialog({onClose, item, onDeleteItem, onUpdateListItem, categori
                         sx={{
                             borderRadius: 0,
                             px: 1.5,
-                            color: "primary.main",
-                            bgcolor: "lightblue",
+                            color: "#0B5D1E",
+                            bgcolor: "rgba(11, 93, 30, 0.16)",
+                            "&:hover": {
+                                bgcolor: "rgba(11, 93, 30, 0.24)",
+                            },
                         }}
                     >
                         <AddIcon />
                     </IconButton>
                 </Box>
             </FormControl>
-            <FormControl fullWidth margin="normal">
+            <FormControl fullWidth size="small" margin="dense">
                 <FormLabel id="item-unit-label" sx={{ mb: 0.75 }}>
                     Unit
                 </FormLabel>
@@ -260,7 +289,7 @@ function EditItemDialog({onClose, item, onDeleteItem, onUpdateListItem, categori
                     <MenuItem value="dozen">Dozen</MenuItem>
                 </Select>
             </FormControl>
-            <FormControl fullWidth margin="normal">
+            <FormControl fullWidth size="small" margin="dense">
                 <FormLabel htmlFor="estimated-price" sx={{ mb: 0.75 }}>
                     Estimated Price (optional)
                 </FormLabel>
@@ -269,6 +298,7 @@ function EditItemDialog({onClose, item, onDeleteItem, onUpdateListItem, categori
                     type="number"
                     value={estimatedPrice}
                     onChange={(event) => setEstimatedPrice(event.target.value)}
+                    size="small"
                     fullWidth
                     slotProps={{
                         htmlInput: {
@@ -278,7 +308,7 @@ function EditItemDialog({onClose, item, onDeleteItem, onUpdateListItem, categori
                     }}
                 />
             </FormControl>
-            <FormControl fullWidth margin="normal">
+            <FormControl fullWidth size="small" margin="dense">
                 <FormLabel htmlFor="item-notes" sx={{ mb: 0.75 }}>
                     Notes
                 </FormLabel>
@@ -286,9 +316,10 @@ function EditItemDialog({onClose, item, onDeleteItem, onUpdateListItem, categori
                     id="item-notes"
                     value={notes}
                     onChange={(event) => setNotes(event.target.value)}
+                    size="small"
                     fullWidth
                     multiline
-                    minRows={4}
+                    minRows={3}
                 />
             </FormControl>
             </DialogContent>

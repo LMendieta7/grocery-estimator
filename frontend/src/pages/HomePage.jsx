@@ -4,6 +4,7 @@ import ShoppingList from "../components/ShoppingList";
 import ListSelectorSection from "../components/ListSelectorSection";
 import Header from "../components/Header";
 import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
 
 import {
   addProductToShoppingList,
@@ -13,6 +14,7 @@ import {
 } from "../services/shoppingListApi";
 
 import { getAllCategories } from "../services/categoriesApi";
+
 
 
 
@@ -94,7 +96,9 @@ function HomePage() {
 
   return (
     <>
-      <Header />
+      <Header totalItemsCount={shoppingListDetail ? shoppingListDetail.total_count : "0"}
+              checkedCount = {shoppingListDetail ? shoppingListDetail.checked_count : "0"}
+      />
       <Box
         component="main"
         sx={{
@@ -103,15 +107,14 @@ function HomePage() {
           p: { xs: 1, sm: 2 },
         }}
       > 
+        <Stack spacing={0.7}>
         <ListSelectorSection 
           onSelectList={handleListSelect}
           selectedListId={selectedListId}
-          totalItemsCount={shoppingListDetail ? shoppingListDetail.total_count : ""}
-          checkedCount = {shoppingListDetail ? shoppingListDetail.checked_count : ""}
-
         />
         <ProductSearch onAddProductToList={addProductToList} />
-        
+       </Stack>
+  
         {shoppingListDetail && (
         <>
           <ShoppingList

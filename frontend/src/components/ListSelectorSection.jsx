@@ -2,15 +2,14 @@ import { getAllShoppingLists } from "../services/shoppingListApi";
 import { useEffect, useState } from "react";
 
 import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
 
 
-
-function ListSelectorSection({ selectedListId, onSelectList, totalItemsCount, checkedCount}){
+function ListSelectorSection({ selectedListId, onSelectList}){
     const [shoppingLists, setShoppingLists] = useState([]);
 
     function handleListChange(event) {
@@ -32,11 +31,35 @@ function ListSelectorSection({ selectedListId, onSelectList, totalItemsCount, ch
     }, [onSelectList]);
     
     return (
-        <Box sx={{ display: "flex", alignItems: "flex-end", gap: 10 }}>
-            <FormControl size="small" sx={{ minWidth: 250 }}>
-                <FormLabel id="shopping-list-label" sx={{ mb: 0.75 }}>
-                    Shopping List
-                </FormLabel>
+        <Box
+            sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 3,
+                width: "100%",
+                
+            }}
+        >
+            <FormControl size="small" sx={{ width: {
+                                                xs: "calc(100% - 52px)",
+                                                sm: "40%",
+                                            },
+                                            minWidth: 0,
+                                            "& .MuiOutlinedInput-root": { 
+                                                borderRadius: "8px",
+                                                "& .MuiOutlinedInput-notchedOutline": {
+                                                    borderColor: "#c9d0cb",
+                                                },
+                                                "&:hover .MuiOutlinedInput-notchedOutline": {
+                                                    borderColor: "darkgreen",
+                                                },
+                                                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                                                    borderColor: "darkgreen",
+                                                },
+                                            },
+                                        }}
+            >
                 <Select
                     labelId="shopping-list-label"
                     value={selectedListId}
@@ -44,16 +67,28 @@ function ListSelectorSection({ selectedListId, onSelectList, totalItemsCount, ch
                 >
                 {shoppingLists.map((list) => (
                     <MenuItem key={list.id} value={list.id}>
-                        {list.name}  {`(${checkedCount}/${totalItemsCount})`}
+                        {list.name}  
                     </MenuItem>
                 ))}
                 </Select>
                 
             </FormControl>
-
-            <Button variant="contained" sx={{alignItems: "center"}}>
-                add
-            </Button>
+            
+            <Fab
+                size="small"
+                aria-label="Add shopping list"
+                sx={{
+                    flexShrink: 0,
+                    bgcolor: "#0B5D1E",
+                    color: "#FFF",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.18)",
+                    "&:hover": {
+                        bgcolor: "#094A18",
+                    },
+                }}
+            >
+                <AddIcon sx={{ fontSize: 25 }} />
+            </Fab>
 
         </Box>
     );

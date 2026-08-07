@@ -31,37 +31,63 @@ function ShoppingList({ items, onDeleteItem, onUpdateListItem, categories }) {
                
             }}
         >
-            <List>
+            <List
+                sx={{
+                    display: "grid",
+                    gap: 0.5,
+                    p: 0,
+                }}
+            >
                 {items.map((item) => (
                     <ListItem
                         key={item.id}
-                        divider
                         alignItems="flex-start"
-                        sx={{ pl: 0, py: 0.75 }}
+                        sx={{ p: 0 }}
                     >
                         <Box
                             sx={{
                                 display: "flex",
-                                alignItems: "flex-start",
+                                alignItems: "center",
                                 width: "100%",
                                 minWidth: 0,
-                                gap: 1.25,
+                                gap: 1,
+                                px: 1,
+                                py: 0.5,
+                                bgcolor: "background.paper",
+                                border: "1px solid",
+                                borderColor: "rgba(11, 93, 30, 0.5)",
+                                borderRadius: "8px",
+                                transition: (
+                                    "border-color 160ms ease, "
+                                    + "box-shadow 160ms ease"
+                                ),
+                                "&:hover": {
+                                    borderColor: "#0B5D1E",
+                                    boxShadow: "0 2px 6px rgba(11, 93, 30, 0.1)",
+                                },
                             }}
                         >
                             <Checkbox
                                 checked={item.is_checked}
                                 onChange={(event) => handleCheckbox(item.id, event.target.checked)}
                                 size="small"
-                                sx={{ pl: 0,
-                                    mt: 0.25,
+                                sx={{
+                                    p: 0.5,
+                                    ml: -0.5,
+                                    mt: 0,
+                                    "& .MuiSvgIcon-root": {
+                                        fontSize: 20,
+                                    },
                                 }}
                             />
 
                             <Box sx={{ flex: 1, minWidth: 0 }}>
                                 <Typography
                                     noWrap
+                                    variant="body2"
                                     sx={{
-                                        fontWeight: 600,    
+                                        fontWeight: 600,
+                                        lineHeight: 1.2,
                                     }}
                                 >
                                     {item.product_name}
@@ -69,10 +95,13 @@ function ShoppingList({ items, onDeleteItem, onUpdateListItem, categories }) {
 
                                 <Typography
                                     noWrap
-                                    variant="body2"
+                                    variant="caption"
                                     color="text.secondary"
-                                    sx={{ mt: 0.2,                                         
-                                        fontStyle:"italic"
+                                    sx={{
+                                        display: "block",
+                                        mt: 0.1,
+                                        fontStyle: "italic",
+                                        lineHeight: 1.2,
                                     }}
                                 >
                                     Quantity: {Number(item.quantity)} {item.unit}
@@ -86,7 +115,13 @@ function ShoppingList({ items, onDeleteItem, onUpdateListItem, categories }) {
                                     aria-label={`Edit ${item.product_name}`}
                                     onClick={()=> setSelectedItem(item)}
                                     size="small"
-                                    color="primary"
+                                    sx={{
+                                        p: 0.5,
+                                        color: "#0B5D1E",
+                                        "&:hover": {
+                                            bgcolor: "rgba(11, 93, 30, 0.08)",
+                                        },
+                                    }}
                                     >
                                     <EditIcon fontSize="small" />
                                 </IconButton>
