@@ -33,16 +33,25 @@ function ShoppingList({ items, onDeleteItem, onUpdateListItem, categories }) {
         >
             <List
                 sx={{
-                    display: "grid",
-                    gap: 0.5,
                     p: 0,
+                    bgcolor: "background.paper",
+                    border: "1px solid",
+                    borderColor: "rgba(11, 93, 30, 0.22)",
+                    borderRadius: "8px",
+                    overflow: "hidden",
                 }}
             >
                 {items.map((item) => (
                     <ListItem
                         key={item.id}
                         alignItems="flex-start"
-                        sx={{ p: 0 }}
+                        sx={{
+                            p: 0,
+                            "&:not(:last-of-type)": {
+                                borderBottom: "1px solid",
+                                borderColor: "rgba(11, 93, 30, 0.14)",
+                            },
+                        }}
                     >
                         <Box
                             sx={{
@@ -52,18 +61,10 @@ function ShoppingList({ items, onDeleteItem, onUpdateListItem, categories }) {
                                 minWidth: 0,
                                 gap: 1,
                                 px: 1,
-                                py: 0.5,
-                                bgcolor: "background.paper",
-                                border: "1px solid",
-                                borderColor: "rgba(11, 93, 30, 0.5)",
-                                borderRadius: "8px",
-                                transition: (
-                                    "border-color 160ms ease, "
-                                    + "box-shadow 160ms ease"
-                                ),
+                                py: 0.65,
+                                transition: "background-color 160ms ease",
                                 "&:hover": {
-                                    borderColor: "#0B5D1E",
-                                    boxShadow: "0 2px 6px rgba(11, 93, 30, 0.1)",
+                                    bgcolor: "rgba(11, 93, 30, 0.035)",
                                 },
                             }}
                         >
@@ -76,7 +77,7 @@ function ShoppingList({ items, onDeleteItem, onUpdateListItem, categories }) {
                                     ml: -0.5,
                                     mt: 0,
                                     "& .MuiSvgIcon-root": {
-                                        fontSize: 20,
+                                        fontSize: 25,
                                     },
                                 }}
                             />
@@ -104,7 +105,7 @@ function ShoppingList({ items, onDeleteItem, onUpdateListItem, categories }) {
                                         lineHeight: 1.2,
                                     }}
                                 >
-                                    Quantity: {Number(item.quantity)} {item.unit}
+                                    Qty: {Number(item.quantity)} {item.unit}
                                     {item.estimated_price != null &&
                                         ` • $${item.estimated_price}`}
                                     {item.notes &&` •  ${item.notes}`}

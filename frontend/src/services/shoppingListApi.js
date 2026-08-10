@@ -78,7 +78,7 @@ export async function updateShoppingListItem(shoppingListId, itemId, request) {
 }
 
 export async function addShoppingList(request){
-    const response = await fetch(`${API_BASE_URL}/shopping-lists/`,
+    const response = await fetch(`${API_BASE_URL}/shopping-lists`,
       {
       method: "POST",
       headers: {

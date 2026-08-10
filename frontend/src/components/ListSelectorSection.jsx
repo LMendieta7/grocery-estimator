@@ -1,4 +1,5 @@
 import { getAllShoppingLists } from "../services/shoppingListApi";
+import { addShoppingList } from "../services/shoppingListApi";
 import { useEffect, useState } from "react";
 
 import FormControl from "@mui/material/FormControl";
@@ -8,9 +9,12 @@ import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 
+import ListDialog from "./ListDialog";
+
 
 function ListSelectorSection({ selectedListId, onSelectList}){
     const [shoppingLists, setShoppingLists] = useState([]);
+    const [listDialogOpen, setListDialogOpen] = useState(false);
 
     function handleListChange(event) {
         const newListId = event.target.value;
@@ -30,6 +34,28 @@ function ListSelectorSection({ selectedListId, onSelectList}){
         loadShoppingLists();
     }, [onSelectList]);
     
+    function handleDialogClickOpen(){
+        setListDialogOpen(true);
+    }
+
+    function handleDialogClose(){
+        setListDialogOpen(false);
+    }
+
+    async function createShoppingList(request) {
+        
+        const newList = await addShoppingList(request);
+    
+        setShoppingLists((currentLists) => [
+        ...currentLists,
+        newList,
+    ]);
+
+    }
+    
+        
+     
+
     return (
         <Box
             sx={{
@@ -76,6 +102,7 @@ function ListSelectorSection({ selectedListId, onSelectList}){
             
             <Fab
                 size="small"
+                onClick={handleDialogClickOpen}
                 aria-label="Add shopping list"
                 sx={{
                     flexShrink: 0,
@@ -89,7 +116,13 @@ function ListSelectorSection({ selectedListId, onSelectList}){
             >
                 <AddIcon sx={{ fontSize: 25 }} />
             </Fab>
-
+            {listDialogOpen && (
+                <ListDialog
+                    onClose={handleDialogClose}
+                    onCreate={createShoppingList}
+                />        
+            )}
+        
         </Box>
     );
 }
