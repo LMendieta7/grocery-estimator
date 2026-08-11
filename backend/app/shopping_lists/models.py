@@ -46,7 +46,7 @@ class ShoppingListItemTable(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     shopping_list_id: Mapped[int] = mapped_column(
-        ForeignKey("shopping_lists.id"),
+        ForeignKey("shopping_lists.id", ondelete="CASCADE"),
         nullable=False,
     )
     product_id: Mapped[int] = mapped_column(

@@ -77,7 +77,7 @@ export async function updateShoppingListItem(shoppingListId, itemId, request) {
     return response.json();
 }
 
-export async function addShoppingList(request){
+export async function createShoppingList(request){
     const response = await fetch(`${API_BASE_URL}/shopping-lists`,
       {
       method: "POST",

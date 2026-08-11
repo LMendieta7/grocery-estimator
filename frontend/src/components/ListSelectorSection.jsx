@@ -1,5 +1,7 @@
-import { getAllShoppingLists } from "../services/shoppingListApi";
-import { addShoppingList } from "../services/shoppingListApi";
+import {
+    createShoppingList,
+    getAllShoppingLists,
+} from "../services/shoppingListApi";
 import { useEffect, useState } from "react";
 
 import FormControl from "@mui/material/FormControl";
@@ -14,7 +16,7 @@ import ListDialog from "./ListDialog";
 
 function ListSelectorSection({ selectedListId, onSelectList}){
     const [shoppingLists, setShoppingLists] = useState([]);
-    const [listDialogOpen, setListDialogOpen] = useState(false);
+    const [isListDialogOpen, setIsListDialogOpen] = useState(false);
 
     function handleListChange(event) {
         const newListId = event.target.value;
@@ -34,22 +36,23 @@ function ListSelectorSection({ selectedListId, onSelectList}){
         loadShoppingLists();
     }, [onSelectList]);
     
-    function handleDialogClickOpen(){
-        setListDialogOpen(true);
+    function handleOpenListDialog(){
+        setIsListDialogOpen(true);
     }
 
-    function handleDialogClose(){
-        setListDialogOpen(false);
+    function handleCloseListDialog(){
+        setIsListDialogOpen(false);
     }
 
-    async function createShoppingList(request) {
+    async function handleCreateShoppingList(request) {
         
-        const newList = await addShoppingList(request);
+        const createdList = await createShoppingList(request);
     
         setShoppingLists((currentLists) => [
         ...currentLists,
-        newList,
-    ]);
+        createdList,
+        ]);
+        onSelectList(createdList.id)
 
     }
     
@@ -102,7 +105,7 @@ function ListSelectorSection({ selectedListId, onSelectList}){
             
             <Fab
                 size="small"
-                onClick={handleDialogClickOpen}
+                onClick={handleOpenListDialog}
                 aria-label="Add shopping list"
                 sx={{
                     flexShrink: 0,
@@ -116,10 +119,10 @@ function ListSelectorSection({ selectedListId, onSelectList}){
             >
                 <AddIcon sx={{ fontSize: 25 }} />
             </Fab>
-            {listDialogOpen && (
+            {isListDialogOpen && (
                 <ListDialog
-                    onClose={handleDialogClose}
-                    onCreate={createShoppingList}
+                    onClose={handleCloseListDialog}
+                    onCreate={handleCreateShoppingList}
                 />        
             )}
         

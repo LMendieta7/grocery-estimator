@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Response, status
 
 from backend.app.core.dependencies import get_shopping_list_service
 from backend.app.shopping_lists.schemas import (
@@ -93,3 +93,17 @@ def create_shopping_list(
     service: ShoppingListService = Depends(get_shopping_list_service),
 ):
     return service.create_list(request)
+
+@router.delete(
+    "/shopping-lists/{shopping_list_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+)
+def delete_list(
+    shopping_list_id: int,
+    service: ShoppingListService = Depends(get_shopping_list_service),
+):
+    deleted = service.delete_list(shopping_list_id)
+    if not deleted:
+        raise HTTPException(status_code=404, detail="Shopping list not found")
+
+    return Response(status_code=status.HTTP_204_NO_CONTENT)

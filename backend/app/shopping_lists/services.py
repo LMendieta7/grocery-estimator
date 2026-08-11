@@ -156,3 +156,13 @@ class ShoppingListService:
         self.db.refresh(shopping_list)
 
         return shopping_list
+
+    def delete_list(self, shopping_list_id):
+        shopping_list = self.db.get(ShoppingListTable, shopping_list_id)
+
+        if shopping_list is None:
+            return False
+
+        self.db.delete(shopping_list)
+        self.db.commit()
+        return True
