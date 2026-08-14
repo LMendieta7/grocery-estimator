@@ -11,16 +11,17 @@ import Box from "@mui/material/Box";
 
 
 
-function ListDialog({ onClose, onCreate}){
-    const [listName, setListName] = useState("");
+function ListDialog({ list = null, onClose, onSave }) {
+    const [listName, setListName] = useState(list?.name ?? "");
+    const isEditing = Boolean(list);
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const list = {
+        const request = {
             name: listName.trim()
         };
 
-        await onCreate(list);
+        await onSave(request);
         onClose();
     }
 
@@ -40,7 +41,9 @@ function ListDialog({ onClose, onCreate}){
                 },
             }}
         >
-            <DialogTitle sx={{mb:0, pb:0}} align="center">Create New List </DialogTitle>
+            <DialogTitle sx={{mb:0, pb:0}} align="center">
+                {isEditing ? "Edit List" : "Create New List"}
+            </DialogTitle>
             <Box
                 component="form"
                 onSubmit={handleSubmit}
@@ -84,7 +87,7 @@ function ListDialog({ onClose, onCreate}){
                 </Button>
 
                 <Button type="submit"  variant="contained" size="medium">
-                    Create
+                    {isEditing ? "Save" : "Create"}
                 </Button>
             </DialogActions>
             </Box>

@@ -77,7 +77,7 @@ function ProductSearch({ onAddProductToList }) {
                 sx={{
                     width: {
                         xs: "100%",
-                        sm: "40%",
+                        sm: "45%",
                     },
                     "& .MuiOutlinedInput-root": {
                         borderRadius: "8px",

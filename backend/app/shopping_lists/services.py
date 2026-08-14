@@ -14,6 +14,7 @@ from backend.app.shopping_lists.schemas import (
     ShoppingListDetailResponse,
     ShoppingListItemResponse,
     ShoppingListCreateRequest,
+    ShoppingListUpdateRequest,
 )
 
 
@@ -155,6 +156,17 @@ class ShoppingListService:
         self.db.commit()
         self.db.refresh(shopping_list)
 
+        return shopping_list
+
+    def update_list(self, shopping_list_id: int, request: ShoppingListUpdateRequest):
+        shopping_list = self.db.get(ShoppingListTable, shopping_list_id)
+
+        if shopping_list is None:
+            return None
+
+        shopping_list.name = request.name.strip()
+        self.db.commit()
+        self.db.refresh(shopping_list)
         return shopping_list
 
     def delete_list(self, shopping_list_id):
