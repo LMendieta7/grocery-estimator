@@ -16,15 +16,15 @@ import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
-import ListDialog from "./ListDialog";
+import ListDialog from "./dialogs/ListDialog";
 import Divider from '@mui/material/Divider';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 
-function ListSelectorSection({ selectedListId, onSelectList }){
+function ListSelectorSection({ selectedListId, onSelectList}){
     const [shoppingLists, setShoppingLists] = useState([]);
     const [isCreateListDialogOpen, setIsCreateListDialogOpen] = useState(false);
-    const [isEditListDialogOpen, setIsEditListDialogOpen] = useState(false);
+    const [isEditListDialogOpen, setIsEditListDialogOpen] = useState(false)
 
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -56,19 +56,20 @@ function ListSelectorSection({ selectedListId, onSelectList }){
 
     function handleOpenCreateListDialog(){
         setIsCreateListDialogOpen(true);
+        handleCloseMenu();
     }
 
     function handleCloseCreateListDialog(){
         setIsCreateListDialogOpen(false);
     }
 
-    function handleOpenEditListDialog() {
-        handleCloseMenu();
+    function handleOpenEditListDialog(){
         setIsEditListDialogOpen(true);
+        handleCloseMenu();
     }
 
-    function handleCloseEditListDialog() {
-        setIsEditListDialogOpen(false);
+    function handleCloseEditListDialog(){
+        setIsEditListDialogOpen(false)
     }
 
     async function handleCreateShoppingList(request) {
@@ -93,7 +94,9 @@ function ListSelectorSection({ selectedListId, onSelectList }){
         );
     }
 
-    const selectedList = shoppingLists.find((list) => list.id === selectedListId) ?? null;
+    
+
+    const selectedList = shoppingLists.find((list) => list.id === selectedListId) 
 
 
     return (
@@ -165,15 +168,16 @@ function ListSelectorSection({ selectedListId, onSelectList }){
                     onSave={handleCreateShoppingList}
                 />
             )}
-            {isEditListDialogOpen && selectedList && (
+            {isEditListDialogOpen && selectedList &&(
                 <ListDialog
                     list={selectedList}
                     onClose={handleCloseEditListDialog}
                     onSave={handleUpdateShoppingList}
                 />
             )}
+            
             <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseMenu}>
-                <MenuItem onClick={handleOpenEditListDialog} disabled={!selectedList}>
+                <MenuItem onClick={handleOpenEditListDialog}>
                     <ListItemIcon>
                         <EditIcon fontSize="small" sx={{color:"darkGreen"}}></EditIcon>
                     </ListItemIcon>

@@ -5,7 +5,7 @@ import Checkbox from "@mui/material/Checkbox";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
-import EditItemDialog from "./EditItemDialog";
+import EditItemDialog from "./dialogs/EditItemDialog";
 
 import { useState } from "react";
 

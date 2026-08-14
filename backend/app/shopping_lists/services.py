@@ -14,7 +14,6 @@ from backend.app.shopping_lists.schemas import (
     ShoppingListDetailResponse,
     ShoppingListItemResponse,
     ShoppingListCreateRequest,
-    ShoppingListUpdateRequest,
 )
 
 
@@ -158,17 +157,6 @@ class ShoppingListService:
 
         return shopping_list
 
-    def update_list(self, shopping_list_id: int, request: ShoppingListUpdateRequest):
-        shopping_list = self.db.get(ShoppingListTable, shopping_list_id)
-
-        if shopping_list is None:
-            return None
-
-        shopping_list.name = request.name.strip()
-        self.db.commit()
-        self.db.refresh(shopping_list)
-        return shopping_list
-
     def delete_list(self, shopping_list_id):
         shopping_list = self.db.get(ShoppingListTable, shopping_list_id)
 
@@ -178,3 +166,20 @@ class ShoppingListService:
         self.db.delete(shopping_list)
         self.db.commit()
         return True
+
+    def update_list(self, shopping_list_id, request):
+            shopping_list = self.db.get(ShoppingListTable, shopping_list_id)
+            if shopping_list is None :
+                return None
+    
+            update_data = request.model_dump(exclude_unset=True)
+
+            if update_data.get("name") is not None:
+                update_data["name"] = update_data["name"].strip()
+
+            for field, value in update_data.items():
+                setattr(shopping_list, field, value)
+    
+            self.db.commit()
+    
+            return shopping_list

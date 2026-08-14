@@ -96,13 +96,16 @@ export async function createShoppingList(request){
 }
 
 export async function updateShoppingList(shoppingListId, request) {
-  const response = await fetch(`${API_BASE_URL}/shopping-lists/${shoppingListId}`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
+  const response = await fetch(
+    `${API_BASE_URL}/shopping-lists/${shoppingListId}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(request),
     },
-    body: JSON.stringify(request),
-  });
+  );
 
   if (!response.ok) {
     throw new Error("Could not update shopping list");

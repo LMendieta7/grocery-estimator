@@ -111,6 +111,7 @@ function HomePage() {
         <ListSelectorSection 
           onSelectList={handleListSelect}
           selectedListId={selectedListId}
+          shoppingListDetail={shoppingListDetail}
         />
         <ProductSearch onAddProductToList={addProductToList} />
        </Stack>
