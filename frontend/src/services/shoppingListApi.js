@@ -113,3 +113,18 @@ export async function updateShoppingList(shoppingListId, request) {
 
   return response.json();
 }
+
+
+export async function deleteShoppingList(shoppingListId) {
+  const response = await fetch(
+    `${API_BASE_URL}/shopping-lists/${shoppingListId}`,
+    {
+      method: "DELETE",
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error("Could not delete shopping list");
+  }
+
+}

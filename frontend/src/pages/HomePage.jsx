@@ -5,6 +5,7 @@ import ListSelectorSection from "../components/ListSelectorSection";
 import Header from "../components/Header";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
 import {
   addProductToShoppingList,
@@ -16,8 +17,6 @@ import {
 import { getAllCategories } from "../services/categoriesApi";
 
 
-
-
 function HomePage() {
   const [selectedListId, setSelectedListId] = useState("");
   const [shoppingListDetail, setShoppingListDetail] = useState(null);
@@ -26,6 +25,7 @@ function HomePage() {
   useEffect(() => {
     async function loadShoppingListDetails() {
       if (!selectedListId) {
+        setShoppingListDetail(null);
         return;
       }
 
@@ -113,19 +113,23 @@ function HomePage() {
           selectedListId={selectedListId}
           shoppingListDetail={shoppingListDetail}
         />
-        <ProductSearch onAddProductToList={addProductToList} />
+        {selectedListId && (
+          <ProductSearch onAddProductToList={addProductToList} />
+        )}
        </Stack>
   
-        {shoppingListDetail && (
-        <>
+        {shoppingListDetail ? (
           <ShoppingList
             items={shoppingListDetail.items}
             onDeleteItem={deleteItemFromList}
             onUpdateListItem={handleUpdateListItem}
             categories={categories}
           />
-        </>
-      )}
+        ) : (
+          <Typography align="center" sx={{ color: "darkGreen", py: 6 }}>
+            Create a shopping list to get started.
+          </Typography>
+        )}
       </Box>
     </>
     

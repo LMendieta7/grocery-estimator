@@ -2,6 +2,7 @@ import {
     createShoppingList,
     getAllShoppingLists,
     updateShoppingList,
+    deleteShoppingList
 } from "../services/shoppingListApi";
 import { useEffect, useState } from "react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -16,15 +17,21 @@ import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
-import ListDialog from "./dialogs/ListDialog";
 import Divider from '@mui/material/Divider';
 import DeleteIcon from '@mui/icons-material/Delete';
+import DeselectIcon from "@mui/icons-material/Deselect";
+import RemoveDoneIcon from "@mui/icons-material/RemoveDone";
 
+
+import ListDialog from "./dialogs/ListDialog";
+import DeleteListDialog from "./dialogs/DeleteListDialog";
+import ListIcon from '@mui/icons-material/List';
 
 function ListSelectorSection({ selectedListId, onSelectList}){
     const [shoppingLists, setShoppingLists] = useState([]);
     const [isCreateListDialogOpen, setIsCreateListDialogOpen] = useState(false);
-    const [isEditListDialogOpen, setIsEditListDialogOpen] = useState(false)
+    const [isEditListDialogOpen, setIsEditListDialogOpen] = useState(false);
+    const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
 
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -72,6 +79,17 @@ function ListSelectorSection({ selectedListId, onSelectList}){
         setIsEditListDialogOpen(false)
     }
 
+    // Delete list dialog handle
+     const handleOpenDeleteListDialog = () => {
+        setIsDeleteDialogOpen(true);
+        handleCloseMenu();
+    };
+
+    const handleCloseDeleteListDialog = () => {
+        setIsDeleteDialogOpen(false);
+    };
+   
+   
     async function handleCreateShoppingList(request) {
 
         const createdList = await createShoppingList(request);
@@ -94,10 +112,18 @@ function ListSelectorSection({ selectedListId, onSelectList}){
         );
     }
 
-    
-
     const selectedList = shoppingLists.find((list) => list.id === selectedListId) 
 
+     async function handleDeleteShoppingList() {
+        await deleteShoppingList(selectedListId);
+
+        const remainingLists = shoppingLists.filter(
+            (list) => list.id !== selectedListId
+        );
+
+        setShoppingLists(remainingLists);
+        onSelectList(remainingLists[0]?.id ?? "");
+    }
 
     return (
         <Box
@@ -175,16 +201,62 @@ function ListSelectorSection({ selectedListId, onSelectList}){
                     onSave={handleUpdateShoppingList}
                 />
             )}
+            {isDeleteDialogOpen && (
+                <DeleteListDialog
+                    selectedList={selectedList}
+                    onClose={handleCloseDeleteListDialog}
+                    onDelete={handleDeleteShoppingList}                    
+                />
+            )}
             
-            <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseMenu}>
+            <Menu
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleCloseMenu}
+                slotProps={{
+                    list: {
+                        sx: {
+                            py: 0.75,
+                            "& .MuiMenuItem-root": {
+                                minHeight: 45,
+                                py: 0.75,
+                            },
+                        },
+                    },
+                }}
+            >
                 <MenuItem onClick={handleOpenEditListDialog}>
                     <ListItemIcon>
                         <EditIcon fontSize="small" sx={{color:"darkGreen"}}></EditIcon>
                     </ListItemIcon>
                     <ListItemText>Edit list</ListItemText>
                 </MenuItem>
-                <Divider sx={{ my: 0.5 }} />
-                <MenuItem onClick={handleCloseMenu}>
+
+                <MenuItem >
+                    <ListItemIcon>
+                        <DeselectIcon fontSize="small" sx={{color:"darkGreen"}}></DeselectIcon>
+                    </ListItemIcon>
+                    <ListItemText>Uncheck all</ListItemText>
+                </MenuItem>
+
+                 <MenuItem >
+                    <ListItemIcon>
+                        <DeleteIcon fontSize="small" sx={{color:"darkGreen"}}></DeleteIcon>
+        
+                    </ListItemIcon>
+                    <ListItemText>Delete checked</ListItemText>
+                </MenuItem>
+                <Divider sx={{ mx: 0.75, my: 0.25 }} />
+                <MenuItem >
+                    <ListItemIcon>
+                        <ListIcon fontSize="small" sx={{color:"darkGreen"}}></ListIcon>
+                    </ListItemIcon>
+                    <ListItemText>Clear list</ListItemText>
+                </MenuItem>
+
+                <Divider sx={{ mx: 0.75, my: 0.25 }} />
+                
+                <MenuItem onClick={handleOpenDeleteListDialog}>
                     <ListItemIcon>
                        <DeleteIcon fontSize="small" color="error"></DeleteIcon>
                     </ListItemIcon>
